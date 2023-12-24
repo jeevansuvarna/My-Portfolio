@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.active {
+  color: "#64ff"
+}
+
+.navbar {
+  z-index: 300;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -18,10 +26,63 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+/* Your custom CSS class */
+.underline-transition {
+  color: #64FFDA;
+  /* Replace with your desired textGreen color */
+  position: relative;
+}
+
+.underline-transition::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.5rem;
+  width: 0;
+  background-color: #64FFDA;
+  /* Replace with your desired textGreen color */
+  transition: all 300ms;
+}
+
+.underline-transition:hover::after {
+  width: 100%;
+}
+
+.underline-transition::after {
+  height: 1px;
+}
+
+.underline-transition::after {
+  width: 0;
+}
+
+.underline-transition::after {
+  bottom: 0;
+}
+
+.underline-transition::after {
+  left: 0;
+}
+
+.underline-transition:hover::after {
+  width: 100%;
+}
+
+.underline-transition::after {
+  transition: all 300ms;
+}
+
+.underline-transition::after {
+  transition-duration: 300ms;
+}
+
+.underline-transition {
+  cursor: pointer;
 }
