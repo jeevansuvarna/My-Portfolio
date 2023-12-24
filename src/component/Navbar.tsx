@@ -49,9 +49,11 @@ export default function Navbar() {
                             <span>04.</span><li> Contact</li>
                         </Link>
                     </ul>
-                    <button className="border border-textGreen rounded-md text-textGreen text-[13px] px-6 py-3 hover:bg-hoverColor duration-200">
-                        Resume
-                    </button>
+                    <a href="https://drive.google.com/file/d/1FXjifdxTJf3W9NZkfY9L1-PdsEdI3c1k/view?usp=sharing" target="_blank">
+                        <button className="border border-textGreen rounded-md text-textGreen text-[13px] px-6 py-3 hover:bg-hoverColor duration-200">
+                            Resume
+                        </button>
+                    </a>
                 </div>
                 <div onClick={() => setShowMenu(true)} className="w-6  h-5 flex flex-col justify-between items-center mdl:hidden text-4x1 text-textGReen cursor-pointer overflow cursor-pointer overflow-hidden group">
                     <span className="w-full h-[2px] bg-textGreen inline-flex transform translate-x-2 group-hover:translate-x-2 transition-all ease-in-out duration-300"></span>
@@ -136,7 +138,7 @@ export default function Navbar() {
                                             </motion.li>
                                         </Link>
                                     </ul>
-                                    <a href="" target="_blank">
+                                    <a href="https://drive.google.com/file/d/1FXjifdxTJf3W9NZkfY9L1-PdsEdI3c1k/view?usp=sharing" target="_blank">
                                         <motion.button
                                             className="w-32 h-10 rounded-md text-textGreen text-[13px] border border-textGreen hover:bg-hoverColor duration-300"
                                             initial={{ opacity: 0 }}
@@ -153,7 +155,7 @@ export default function Navbar() {
                                         initial={{ y: 20, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
                                         transition={{ delay: 1, ease: "easeIn" }}
-                                        href=""
+                                        href="https://github.com/jeevansuvarna"
                                         target="_blank"
                                     >
                                         <span className="w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen text-zinc-200 rounded-full inline flex
@@ -166,7 +168,7 @@ export default function Navbar() {
                                         initial={{ y: 20, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
                                         transition={{ delay: 1, ease: "easeIn" }}
-                                        href=""
+                                        href="https://www.instagram.com/jeevaaannnn?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr"
                                         target="_blank"
                                     >
                                         <span className="w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen text-zinc-200 rounded-full inline flex
@@ -179,7 +181,7 @@ export default function Navbar() {
                                         initial={{ y: 20, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
                                         transition={{ delay: 1, ease: "easeIn" }}
-                                        href=""
+                                        href="https://www.linkedin.com/in/jeevan-suvarna-741b19186/"
                                         target="_blank"
                                     >
                                         <span className="w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen text-zinc-200 rounded-full inline flex
@@ -194,6 +196,6 @@ export default function Navbar() {
                     )
                 }
             </div>
-        </div>
+        </div >
     )
 }

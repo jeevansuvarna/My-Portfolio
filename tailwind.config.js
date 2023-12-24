@@ -24,7 +24,8 @@ module.exports = {
         mdl: "768px",
         lg: "960px",
         lgl: "1024px",
-        xl: "1280px"
+        xl: "1280px",
+        'max-lg': { 'max': '1023px' },
       },
       fontFamily: {
         bodyFont: ["Fira Code", "monospace"],
