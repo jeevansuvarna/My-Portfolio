@@ -13,7 +13,7 @@ export default function Projects() {
             <div className="w-full flex gap-28 flex-col items-center justify-between">
                 <div className="w-full flex flex-col items-center justify-center gap-28 mt-10">
                     <div className="flex flex-col xl:flex-row gap-6" >
-                        <a href="/" target="_blank" className="w-full xl:w-1/2 h-auto group">
+                        <a href="https://sort-algoviz.netlify.app/" target="_blank" className="w-full xl:w-1/2 h-auto group">
                             <div className="relative">
                                 <div className="hidden lgl:inline-block absolute w-full h-full bg-textGreen/20 rounded-md top-0 left-0 group-hover:bg-transparent duration-300"></div>
                                 <Image
