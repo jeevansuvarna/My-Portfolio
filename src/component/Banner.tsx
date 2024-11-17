@@ -15,7 +15,7 @@ export default function Banner() {
                 <span className="text-textGreen underline-transition">elegant</span> and&nbsp;
                 <span className="text-textGreen underline-transition">scalable</span> digital solutions.
             </p>
-            <a href="https://drive.google.com/file/d/1sTb2IICsePuZ4M9xDY3aqz5OpL2tBw2r/view" target="_blank">
+            <a href="https://drive.google.com/file/d/1D9tRrhXzRZlFjCwb7s1gURFc-crFV60X/view?usp=sharing" target="_blank">
                 <button className="w-52 h-14 text-sm font-titleFont border border-textGreen rounded-md text-textGreen teacking-wide hover:bg-hoverColor duration-300" >
                     Skill Snapshot - Resume
                 </button>

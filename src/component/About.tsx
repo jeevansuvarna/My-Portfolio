@@ -10,7 +10,7 @@ export default function About() {
             <Title title="About Me" id="01" />
             <div className="flex flex-col lgl:flex-row gap-16">
                 <div className="w-full lgl:w-2/3 text-base texxt-textDark font-medium flex flex-col gap-4">
-                    <p> Hello !, My name is <span className="text-textGreen underline-transition">Jeevan Suvarna</span> and I like to build digital solutions. I am a Full stack Developer with 2.5+ years of experience.
+                    <p> Hello !, My name is <span className="text-textGreen underline-transition">Jeevan Suvarna</span> and I like to build digital solutions. I am a Full stack Developer with 3.5+ years of experience.
                         My interest on web developed during my college days, back in 2016 when I started working on nodejs projects along with front-end tech. Currently , I am working in a startup company
                         where I have worked on both Back and Front End Tech. </p>
                     <div>

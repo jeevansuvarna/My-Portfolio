@@ -13,6 +13,16 @@ export default function Company() {
                         <TiArrowForward />
                     </span>
                     <div>
+                        Led the migration of a fully-fledged e-commerce platform from <span className="text-textGreen underline-transition">Vue.js to React</span>, optimizing performance and
+                        scalability, enhancing user experience, and improving SEO metrics and enhanced web performance by up to
+                        80%.
+                    </div>
+                </li>
+                <li className="text-base flex gap-2 text-textDark">
+                    <span className="text-textGreen mt-1">
+                        <TiArrowForward />
+                    </span>
+                    <div>
                         Established and uphold a resilient <span className="text-textGreen underline-transition">Back-End for Front- End </span>
                         layer to power a high performance application, effectively managing user data across 21 countries using&nbsp;
                         <span className="text-textGreen underline-transition">Nodejs</span> and&nbsp;
