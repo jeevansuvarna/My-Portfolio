@@ -138,7 +138,7 @@ export default function Navbar() {
                                             </motion.li>
                                         </Link>
                                     </ul>
-                                    <a href="https://drive.google.com/file/d/1FXjifdxTJf3W9NZkfY9L1-PdsEdI3c1k/view?usp=sharing" target="_blank">
+                                    <a href="https://drive.google.com/file/d/1D9tRrhXzRZlFjCwb7s1gURFc-crFV60X/view?usp=sharing" target="_blank">
                                         <motion.button
                                             className="w-32 h-10 rounded-md text-textGreen text-[13px] border border-textGreen hover:bg-hoverColor duration-300"
                                             initial={{ opacity: 0 }}
