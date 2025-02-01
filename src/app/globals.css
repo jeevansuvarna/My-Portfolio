@@ -33,7 +33,7 @@ body {
 
 /* Your custom CSS class */
 .underline-transition {
-  color: #64FFDA;
+  /* color: #64FFDA; */
   /* Replace with your desired textGreen color */
   position: relative;
 }
@@ -46,7 +46,7 @@ body {
   left: 0;
   height: 0.5rem;
   width: 0;
-  background-color: #64FFDA;
+  background-color: #00FFFF;
   /* Replace with your desired textGreen color */
   transition: all 300ms;
 }
