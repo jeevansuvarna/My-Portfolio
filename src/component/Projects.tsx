@@ -32,7 +32,7 @@ export default function Projects() {
                 Featured Project
               </p>
               <h3 className="text-2xl font-bold">Sort Visualizer</h3>
-              <p className="bg-[#112240] relative z-20 text-sm md:text-base p-2 md:p-6 rounded-md">
+              <p className="bg-[#121212] relative z-20 text-sm md:text-base p-2 md:p-6 rounded-md">
                 An application that visually illustrate well-know{' '}
                 <span className="text-textGreen underline-transition text-textUnderline">
                   sorting algorithm
@@ -84,7 +84,7 @@ export default function Projects() {
                 Featured Project
               </p>
               <h3 className="text-2xl font-bold">Portfolio Website</h3>
-              <p className="bg-[#112240] relative z-20 text-sm md:text-base p-2 xl:-mr-16 md:p-6 rounded-md ">
+              <p className="bg-[#121212] relative z-20 text-sm md:text-base p-2 xl:-mr-16 md:p-6 rounded-md ">
                 My personal website , inspired from brittany chiang. Which
                 displays my experiences , skills and projects.
               </p>

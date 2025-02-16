@@ -18,35 +18,35 @@ export default function Work() {
                         className={`${workId == 1 ?
                             "border-l-textGreen text-textGreen" :
                             "border-l-textDark text-textDark"
-                            } border-l-2  bg-transperant hover:bg-[#112240] py-3 text-sm cursor-pointer duration-300 px-8 font-medium`}
+                            } border-l-2  bg-transperant hover:bg-[#121212] py-3 text-sm cursor-pointer duration-300 px-8 font-medium`}
                     >
                         CBT
                     </li>
                     {/* <li className={`${workId == 2 ?
                         "border-l-textGreen text-textGreen" :
                         "border-l-textDark text-textDark"
-                        } border-l-2  bg-transperant hover:bg-[#112240] py-3 text-sm cursor-pointer duration-300 px-8 font-medium`}
+                        } border-l-2  bg-transperant hover:bg-[#121212] py-3 text-sm cursor-pointer duration-300 px-8 font-medium`}
                         onClick={() => handleButton(2)}>
                         Company
                     </li>
                     <li className={`${workId == 3 ?
                         "border-l-textGreen text-textGreen" :
                         "border-l-textDark text-textDark"
-                        } border-l-2  bg-transperant hover:bg-[#112240] py-3 text-sm cursor-pointer duration-300 px-8 font-medium`}
+                        } border-l-2  bg-transperant hover:bg-[#121212] py-3 text-sm cursor-pointer duration-300 px-8 font-medium`}
                         onClick={() => handleButton(3)}>
                         Company
                     </li>
                     <li className={`${workId == 4 ?
                         "border-l-textGreen text-textGreen" :
                         "border-l-textDark text-textDark"
-                        } border-l-2  bg-transperant hover:bg-[#112240] py-3 text-sm cursor-pointer duration-300 px-8 font-medium`}
+                        } border-l-2  bg-transperant hover:bg-[#121212] py-3 text-sm cursor-pointer duration-300 px-8 font-medium`}
                         onClick={() => handleButton(4)}>
                         Company
                     </li>
                     <li className={`${workId == 5 ?
                         "border-l-textGreen text-textGreen" :
                         "border-l-textDark text-textDark"
-                        } border-l-2  bg-transperant hover:bg-[#112240] py-3 text-sm cursor-pointer duration-300 px-8 font-medium`}
+                        } border-l-2  bg-transperant hover:bg-[#121212] py-3 text-sm cursor-pointer duration-300 px-8 font-medium`}
                         onClick={() => handleButton(5)}>
                         Company
                     </li> */}
