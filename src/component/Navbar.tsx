@@ -197,7 +197,7 @@ export default function Navbar() {
                   </Link>
                 </ul>
                 <a
-                  href="https://drive.google.com/file/d/1D9tRrhXzRZlFjCwb7s1gURFc-crFV60X/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1g8SJCWkpZ5uVGmrElD1ytoKQRDz554xU/view?usp=sharing"
                   target="_blank"
                 >
                   <motion.button
