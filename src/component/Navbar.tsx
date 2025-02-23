@@ -1,39 +1,55 @@
-'use client';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { MdOutlineClose } from 'react-icons/md';
-import { VscGithubAlt } from 'react-icons/vsc';
-import { LuLinkedin, LuInstagram } from 'react-icons/lu';
+"use client";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { MdOutlineClose } from "react-icons/md";
+import { VscGithubAlt } from "react-icons/vsc";
+import { LuLinkedin, LuInstagram } from "react-icons/lu";
+import ToggleButton from "./ToggleButton";
+import { detectMobileWidth } from "../helper/utils.js";
+
 export default function Navbar() {
   const ref = useRef<string | any>();
   const [showMenu, setShowMenu] = useState(false);
+  const [isMobile, setIsMobile] = useState<any>(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(detectMobileWidth());
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup to remove event listener when component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     const href = e.currentTarget.href;
-    const targetId = href.replace(/.*\#/, '');
+    const targetId = href.replace(/.*\#/, "");
     const element = document.getElementById(targetId);
     element?.scrollIntoView({
-      behavior: 'smooth',
+      behavior: "smooth",
     });
-    const links = document.querySelectorAll('.nav-link');
+    const links = document.querySelectorAll(".nav-link");
     links.forEach((link) => {
-      link.classList.remove('.active');
+      link.classList.remove(".active");
     });
-    e.currentTarget.classList.add('active');
+    e.currentTarget.classList.add("active");
   };
 
   return (
     <div className="w-full h-20 shadow-navbarShadow lg:h=[12vh] sticky top-0 z-60 bg-bodyColor px-4 z-300 navbar">
       <div className="flex max-w-container h-full mx-auto py-1 font-titleFont flex items-center justify-between ">
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          {/* <Image className="w-14" src={logo} alt="logo"></Image> */}
-        </motion.div>
+        {!isMobile && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* <Image className="w-14" src={logo} alt="logo"></Image> */}
+          </motion.div>
+        )}
         <div className="hidden mdl:inline-flex items-center gap-7">
           <ul className="flex text-[13px] gap-7 align-items">
             <Link
@@ -76,6 +92,9 @@ export default function Navbar() {
               <li> Contact</li>
             </Link>
           </ul>
+
+          {!isMobile && <ToggleButton />}
+
           <a
             href="https://drive.google.com/file/d/1p6AWhScoVQ1PLL5625mK-NbTgeFfBfkR/view?usp=sharing"
             target="_blank"
@@ -85,6 +104,7 @@ export default function Navbar() {
             </button>
           </a>
         </div>
+        {isMobile && <ToggleButton />}
         <div
           onClick={() => setShowMenu(true)}
           className="w-6  h-5 flex flex-col justify-between items-center mdl:hidden text-4x1 text-textGReen cursor-pointer overflow cursor-pointer overflow-hidden group"
@@ -102,7 +122,7 @@ export default function Navbar() {
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="w-[80%] h-full overflow-y-scroll scrollbarHide bg-[#121212] flex flex-col items-center px-4 py-10 relative"
+              className="w-[80%] h-full overflow-y-scroll scrollbarHide bg-bodyColor flex flex-col items-center px-4 py-10 relative"
             >
               <MdOutlineClose
                 onClick={() => setShowMenu(false)}
@@ -121,7 +141,7 @@ export default function Navbar() {
                       transition={{
                         duration: 0.2,
                         delay: 0.1,
-                        ease: 'easeIn',
+                        ease: "easeIn",
                       }}
                     >
                       <span>01.</span>Home
@@ -138,7 +158,7 @@ export default function Navbar() {
                       transition={{
                         duration: 0.2,
                         delay: 0.1,
-                        ease: 'easeIn',
+                        ease: "easeIn",
                       }}
                     >
                       <span>02.</span>About
@@ -155,7 +175,7 @@ export default function Navbar() {
                       transition={{
                         duration: 0.2,
                         delay: 0.1,
-                        ease: 'easeIn',
+                        ease: "easeIn",
                       }}
                     >
                       <span>03.</span>Work
@@ -172,7 +192,7 @@ export default function Navbar() {
                       transition={{
                         duration: 0.2,
                         delay: 0.1,
-                        ease: 'easeIn',
+                        ease: "easeIn",
                       }}
                     >
                       <span>04.</span>Project
@@ -189,7 +209,7 @@ export default function Navbar() {
                       transition={{
                         duration: 0.2,
                         delay: 0.1,
-                        ease: 'easeIn',
+                        ease: "easeIn",
                       }}
                     >
                       <span>05.</span>Contact
@@ -206,10 +226,10 @@ export default function Navbar() {
                     animate={{ opacity: 1 }}
                     transition={{
                       duration: 0.2,
-                      ease: 'easeIn',
+                      ease: "easeIn",
                     }}
                   >
-                    {' '}
+                    {" "}
                     Resume
                   </motion.button>
                 </a>
@@ -218,7 +238,7 @@ export default function Navbar() {
                 <motion.a
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 1, ease: 'easeIn' }}
+                  transition={{ delay: 1, ease: "easeIn" }}
                   href="https://github.com/jeevansuvarna"
                   target="_blank"
                 >
@@ -232,7 +252,7 @@ export default function Navbar() {
                 <motion.a
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 1, ease: 'easeIn' }}
+                  transition={{ delay: 1, ease: "easeIn" }}
                   href="https://www.instagram.com/jeevaaannnn?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr"
                   target="_blank"
                 >
@@ -246,7 +266,7 @@ export default function Navbar() {
                 <motion.a
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 1, ease: 'easeIn' }}
+                  transition={{ delay: 1, ease: "easeIn" }}
                   href="https://www.linkedin.com/in/jeevan-suvarna-741b19186/"
                   target="_blank"
                 >

@@ -1,11 +1,11 @@
-'use client';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import Navbar from '@/component/Navbar';
-import LeftSection from '@/component/LeftSection';
-import RightSection from '@/component/RightSection';
+"use client";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/component/Navbar";
+import LeftSection from "@/component/LeftSection";
+import RightSection from "@/component/RightSection";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,

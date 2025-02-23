@@ -1,4 +1,4 @@
-'use client';
+"use client";
 export default function Banner() {
   return (
     <section
@@ -9,12 +9,12 @@ export default function Banner() {
         Hi, my name is
       </h3>
       <h1 className="text-4xl lgl:text-6xl font-titleFont font-semibold flex flex-col">
-        {' '}
+        {" "}
         Jeevan Suvarna
         <span className="text-textDark mt-2 lgl:mt-4">Software Developer.</span>
       </h1>
       <p className="text-base md:max-w-[650px] text-textDark font-medium">
-        I am a software developer with 2.5+ years of experiences, dedicated to
+        I am a software developer with 4 years of experiences, dedicated to
         translating innovative ideas into&nbsp;
         <span className="text-textGreen underline-transition text-textUnderline">
           efficient
@@ -22,11 +22,11 @@ export default function Banner() {
         ,
         <span className="text-textGreen underline-transition text-textUnderline">
           elegant
-        </span>{' '}
+        </span>{" "}
         and&nbsp;
         <span className="text-textGreen underline-transition text-textUnderline">
           scalable
-        </span>{' '}
+        </span>{" "}
         digital solutions.
       </p>
       <a
@@ -34,7 +34,7 @@ export default function Banner() {
         target="_blank"
       >
         <button className="w-52 h-14 text-sm font-titleFont border border-textGreen rounded-md text-textGreen teacking-wide hover:bg-hoverColor duration-300">
-          Skill Snapshot - Resume
+          Resume 🚀
         </button>
       </a>
     </section>
