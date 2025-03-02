@@ -2,30 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-
-:root {
-  --body-color: #FFFF;
+.light {
+  --body-color: #ffff;
   --text-green: #8f6149;
   --text-light: #374151;
   --text-dark: #003366;
   --hover-color: rgba(100, 255, 218, 0.1);
   --text-underline: #a73131;
-  --shadowColor: 0 10px 30px -10px rgba(2,12,27,0.7)
+  --shadowColor: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
 }
 
 .dark {
   --body-color: #121212;
-  --text-green: #00FFFF;
-  --text-light: #CCD6F6;
-  --text-dark: #8892B0;
+  --text-green: #00ffff;
+  --text-light: #ccd6f6;
+  --text-dark: #8892b0;
   --hover-color: rgba(100, 255, 218, 0.1);
-  --text-underline: #00FFFF;
-  --shadowColor:0px 4px 10px rgba(255, 255, 255, 0.5)
+  --text-underline: #00ffff;
+  --shadowColor: 0px 4px 10px rgba(255, 255, 255, 0.5);
 }
 
-
 .active {
-  color: "#64ff"
+  color: '#64ff';
 }
 
 .navbar {
@@ -48,9 +46,12 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
+  background: linear-gradient(
+      to bottom,
       transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
 /* Your custom CSS class */
