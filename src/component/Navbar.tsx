@@ -26,6 +26,7 @@ export default function Navbar() {
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
+    setShowMenu(false);
     const href = e.currentTarget.href;
     const targetId = href.replace(/.*\#/, '');
     const element = document.getElementById(targetId);
@@ -55,14 +56,14 @@ export default function Navbar() {
           <ul className='flex text-[13px] gap-7 align-items'>
             <Link
               href='#home'
-              onClick={handleScroll}
+              onClick={(e) => handleScroll(e)}
               className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
             >
               <li>Home</li>
             </Link>
             <Link
               href='#about'
-              onClick={handleScroll}
+              onClick={(e) => handleScroll(e)}
               className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
             >
               <span>01.</span>
@@ -70,7 +71,7 @@ export default function Navbar() {
             </Link>
             <Link
               href='#work'
-              onClick={handleScroll}
+              onClick={(e) => handleScroll(e)}
               className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
             >
               <span>02.</span>
@@ -78,7 +79,7 @@ export default function Navbar() {
             </Link>
             <Link
               href='#project'
-              onClick={handleScroll}
+              onClick={(e) => handleScroll(e)}
               className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
             >
               <span>03.</span>
@@ -86,7 +87,7 @@ export default function Navbar() {
             </Link>
             <Link
               href='#contact'
-              onClick={handleScroll}
+              onClick={(e) => handleScroll(e)}
               className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
             >
               <span>04.</span>
@@ -134,7 +135,7 @@ export default function Navbar() {
                   <Link
                     className='flex flex-col text-base gap-7'
                     href='#home'
-                    onClick={handleScroll}
+                    onClick={(e) => handleScroll(e)}
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
@@ -150,8 +151,8 @@ export default function Navbar() {
                   </Link>
                   <Link
                     className='flex flex-col text-base gap-7'
-                    href='#home'
-                    onClick={handleScroll}
+                    href='#about'
+                    onClick={(e) => handleScroll(e)}
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
@@ -167,8 +168,8 @@ export default function Navbar() {
                   </Link>
                   <Link
                     className='flex flex-col text-base gap-7'
-                    href='#home'
-                    onClick={handleScroll}
+                    href='#work'
+                    onClick={(e) => handleScroll(e)}
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
@@ -184,8 +185,8 @@ export default function Navbar() {
                   </Link>
                   <Link
                     className='flex flex-col text-base gap-7'
-                    href='#home'
-                    onClick={handleScroll}
+                    href='#project'
+                    onClick={(e) => handleScroll(e)}
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
@@ -201,8 +202,8 @@ export default function Navbar() {
                   </Link>
                   <Link
                     className='flex flex-col text-base gap-7'
-                    href='#home'
-                    onClick={handleScroll}
+                    href='#contact'
+                    onClick={(e) => handleScroll(e)}
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
