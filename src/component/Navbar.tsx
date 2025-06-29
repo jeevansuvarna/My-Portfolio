@@ -7,6 +7,7 @@ import { VscGithubAlt } from 'react-icons/vsc';
 import { LuLinkedin, LuInstagram } from 'react-icons/lu';
 import ToggleButton from './ToggleButton';
 import { detectMobileWidth } from '../helper/utils.js';
+import { SiLeetcode } from 'react-icons/si';
 
 export default function Navbar() {
   const ref = useRef<string | any>();
@@ -66,7 +67,6 @@ export default function Navbar() {
               onClick={(e) => handleScroll(e)}
               className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
             >
-              <span>01.</span>
               <li> About</li>
             </Link>
             <Link
@@ -74,7 +74,6 @@ export default function Navbar() {
               onClick={(e) => handleScroll(e)}
               className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
             >
-              <span>02.</span>
               <li> Experience</li>
             </Link>
             <Link
@@ -82,7 +81,6 @@ export default function Navbar() {
               onClick={(e) => handleScroll(e)}
               className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
             >
-              <span>03.</span>
               <li> Work</li>
             </Link>
             <Link
@@ -90,7 +88,6 @@ export default function Navbar() {
               onClick={(e) => handleScroll(e)}
               className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
             >
-              <span>04.</span>
               <li> Contact</li>
             </Link>
           </ul>
@@ -249,6 +246,20 @@ export default function Navbar() {
                                         items-center justify-center hover;text-textGreen cursor-pointer hover:-translate-y-2 transitionall duration-300'
                   >
                     <VscGithubAlt />
+                  </span>
+                </motion.a>
+                <motion.a
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 1, ease: 'easeIn' }}
+                  href='https://leetcode.com/u/jeevansuvarna71/'
+                  target='_blank'
+                >
+                  <span
+                    className='w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen text-zinc-200 rounded-full inline flex
+                                        items-center justify-center hover;text-textGreen cursor-pointer hover:-translate-y-2 transitionall duration-300'
+                  >
+                    <SiLeetcode />
                   </span>
                 </motion.a>
                 <motion.a

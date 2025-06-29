@@ -48,7 +48,7 @@ export default function Banner() {
         <span className='animated-span'>n</span>
         <span className='animated-span'>a</span>
       </h2>
-      <span className='text-textDark mt-2 lgl:mt-4'>Software Developer.</span>
+      <span className='text-textDark mt-2 lgl:mt-4'>Full Stack Developer</span>
       {/* </h1> */}
       <p className='text-base md:max-w-[650px] text-textDark font-medium'>
         I am a software developer with 4 years of experiences, dedicated to
@@ -71,7 +71,7 @@ export default function Banner() {
         target='_blank'
       >
         <button className='w-52 h-14 text-sm font-titleFont border border-textGreen rounded-md text-textGreen teacking-wide hover:bg-hoverColor duration-300'>
-          Resume 🚀
+          Resume
         </button>
       </a>
     </section>

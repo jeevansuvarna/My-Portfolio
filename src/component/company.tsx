@@ -5,97 +5,111 @@ export default function Company() {
     <div>
       <h3>
         Engineer{' '}
-        <span className="text-textGreen tracking-wide underline-transition text-textUnderline">
+        <span className='text-textGreen tracking-wide underline-transition text-textUnderline'>
           Clover Bay Technologies Pvt Ltd
         </span>
       </h3>
-      <p className="text-sm mt-1 font-medium text-textDark">
+      <p className='text-sm mt-1 font-medium text-textDark'>
         July 2021 - Present
       </p>
-      <ul className="mt-6 flex flex-col gap-4">
-        <li className="text-base flex gap-2 text-textDark">
-          <span className="text-textGreen mt-1">
+      <ul className='mt-6 flex flex-col gap-4'>
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
             <TiArrowForward />
           </span>
           <div>
-            Led the migration of a fully-fledged e-commerce platform from{' '}
-            <span className="text-textGreen underline-transition text-textUnderline">
+            Led the successful migration of a large-scale e-commerce platform
+            from{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
               Vue.js to React
             </span>
-            , optimizing performance and scalability, enhancing user experience,
-            and improving SEO metrics and enhanced web performance by up to 80%.
+            , significantly improving performance, scalability, and SEO.
+            Achieved up to{' '}
+            <strong className='text-textGreen'>80% enhancement</strong> in web
+            performance and user experience.
           </div>
         </li>
-        <li className="text-base flex gap-2 text-textDark">
-          <span className="text-textGreen mt-1">
+
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
             <TiArrowForward />
           </span>
           <div>
-            Established and uphold a resilient{' '}
-            <span className="text-textGreen underline-transition text-textUnderline">
-              Back-End for Front- End{' '}
-            </span>
-            layer to power a high performance application, effectively managing
-            user data across 21 countries using&nbsp;
-            <span className="text-textGreen underline-transition text-textUnderline">
-              Nodejs
+            Designed and implemented a robust{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              Backend-for-Frontend (BFF)
             </span>{' '}
-            and&nbsp;
-            <span className="text-textGreen underline-transition text-textUnderline">
+            layer using{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              Node.js
+            </span>{' '}
+            and{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
               Fastify
             </span>
-            &nbsp;to optimise server-side processing, resulting in unparalleled
-            uses responsiveness.
+            , efficiently handling user data across 21 countries and drastically
+            improving server response time and maintainability.
           </div>
         </li>
-        <li className="text-base flex gap-2 text-textDark">
-          <span className="text-textGreen mt-1">
+
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
             <TiArrowForward />
           </span>
           <div>
-            Developed a uses friendly feature for a beauty product platform,
-            introducing a points system linked to the purchases. Using&nbsp;
-            <span className="text-textGreen underline-transition text-textUnderline">
+            Built an engaging feature for a beauty e-commerce platform—a{' '}
+            <strong>reward points system</strong> linked to purchases, enabling
+            users to redeem points for vouchers and products. Developed in{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
               Vue.js
             </span>
-            , ensuring smooth and responsive experience. Users can redeem points
-            for vouchers and products, leading to increase engagement.
-            collaborating with Back-end developers and agile methods. Also
-            revamped the existing 3 process checkout flow to single page
-            checkout . Developed 3 more new features in short period.
+            , it improved user retention and interaction. Also revamped the
+            3-step checkout into a streamlined single-page flow, and delivered 3
+            major features in a short timeline through close collaboration with
+            backend developers and agile teams.
           </div>
         </li>
-        <li className="text-base flex gap-2 text-textDark">
-          <span className="text-textGreen mt-1">
+
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
             <TiArrowForward />
           </span>
           <div>
-            Managed a team of 4 and devised a personalised web theme using{' '}
-            <span className="text-textGreen underline-transition text-textUnderline">
+            Led a team of 4 in creating a customizable web theme using{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
               Vue.js
             </span>
-            , not only enhancing the website's visual appeal but also ensuring
-            effortless customisation via a platform application.
+            , enhancing both aesthetics and user control via a dedicated
+            platform application.
           </div>
         </li>
-        <li className="text-base flex gap-2 text-textDark">
-          <span className="text-textGreen mt-1">
+
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
             <TiArrowForward />
           </span>
           <div>
-            Developed an efficient admin application utilising React and a bit
-            of graphQL with strong emphasis on delivering seamless uses
-            experience.
+            Developed a performant admin dashboard using{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              React
+            </span>{' '}
+            and{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              GraphQL
+            </span>
+            , with a strong focus on delivering seamless and intuitive user
+            experiences.
           </div>
         </li>
-        <li className="text-base flex gap-2 text-textDark">
-          <span className="text-textGreen mt-1">
+
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
             <TiArrowForward />
           </span>
           <div>
-            Conducted code reviews identified areas for improvement , written
-            unit test and implemented best practice to enhance code quality and
-            maintainability.
+            Conducted regular code reviews, introduced unit testing, and
+            advocated best practices to improve code quality, maintainability,
+            and team productivity.
           </div>
         </li>
       </ul>
