@@ -25,7 +25,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@300&family=Montserrat:wght@300&display=swap"
           rel="stylesheet"
         />
-        {/* <script
+        <script
             dangerouslySetInnerHTML={{
               __html: `
               (function(c,l,a,r,i,t,y){
@@ -35,7 +35,7 @@ export default function RootLayout({
               })(window, document, "clarity", "script", "ni2h9q5q9y");
               `,
             }}
-          /> */}
+          />
       </head>
       <body>
         <main className="w-full h-screen overflow-x-hidden overflow-y-scroll font-bodyFont bg-bodyColor text-textLight scrollbar scrollbar-track-textDark/20 scrollbar-thumb-textDark/70">
