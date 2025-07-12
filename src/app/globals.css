@@ -10,6 +10,7 @@
   --hover-color: rgba(100, 255, 218, 0.1);
   --text-underline: #a73131;
   --shadowColor: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+  --nav-text-color: #003366;
 }
 
 .dark {
@@ -20,6 +21,7 @@
   --hover-color: rgba(100, 255, 218, 0.1);
   --text-underline: #00ffff;
   --shadowColor: 0px 4px 10px rgba(255, 255, 255, 0.5);
+  --nav-text-color: #ffffff;
 }
 
 .active {
@@ -108,4 +110,55 @@ body {
 
 .underline-transition {
   cursor: pointer;
+}
+
+.custom-bg {
+  background-color: color-mix(in oklab, var(--body-color) 60%, transparent);
+}
+
+/* globals.css */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes jiggle {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  20% {
+    transform: translateY(-10px) rotate(-10deg);
+  }
+  40% {
+    transform: translateY(10px) rotate(10deg);
+  }
+  60% {
+    transform: translateY(-10px) rotate(-10deg);
+  }
+  80% {
+    transform: translateY(10px) rotate(10deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.animated-span {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.animated-span:hover {
+  animation: jiggle 0.6s ease-in-out;
 }

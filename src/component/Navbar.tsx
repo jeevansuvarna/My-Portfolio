@@ -8,7 +8,9 @@ import { LuLinkedin, LuInstagram } from 'react-icons/lu';
 import ToggleButton from './ToggleButton';
 import { detectMobileWidth } from '../helper/utils.js';
 import { SiLeetcode } from 'react-icons/si';
-
+import Toast from './common/toatMessage';
+import Image from 'next/image';
+import logo from '../assets/images/logo2.png';
 export default function Navbar() {
   const ref = useRef<string | any>();
   const [showMenu, setShowMenu] = useState(false);
@@ -41,8 +43,56 @@ export default function Navbar() {
     e.currentTarget.classList.add('active');
   };
 
+  const navList = [
+    {
+      name: 'Home',
+      link: '#home',
+      highlight: false,
+    },
+    {
+      name: 'Work',
+      link: '#work',
+      highlight: false,
+    },
+    {
+      name: 'Project',
+      link: '#project',
+      highlight: false,
+    },
+    {
+      name: 'Contact',
+      link: '#contact',
+      highlight: false,
+    },
+    {
+      name: 'Resume',
+      link: 'https://drive.google.com/file/d/1g8SJCWkpZ5uVGmrElD1ytoKQRDz554xU/view?usp=sharing',
+      highlight: true,
+    },
+  ];
+  const [showToast, setShowToast] = useState(true);
+
+  // Show toast only once when component mounts
+  useEffect(() => {
+    // Auto-hide after 2 seconds
+    const timer = setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className='w-full h-20 shadow-navbarShadow lg:h=[12vh] sticky top-0 z-60 bg-bodyColor px-4 z-300 navbar'>
+    <div className='h-20 shadow-navbarShadow flex lg:h=[12vh] sticky top-0 z-60 bg-bodyColor px-8 z-300 navbar w-[90%] mx-auto mt-5 border border-[rgba(76,78,79,0.7)] rounded-full custom-bg'>
+      <Link href='/' className='w-[50%] flex items-center'>
+        <Image
+          className='rounded-lg object-contain h-[40px]'
+          src={logo}
+          alt='profilImg'
+          width={60}
+          height={40}
+        />
+      </Link>
       <div className='flex max-w-container h-full mx-auto py-1 font-titleFont flex items-center justify-between '>
         {!isMobile && (
           <motion.div
@@ -55,44 +105,31 @@ export default function Navbar() {
         )}
         <div className='hidden mdl:inline-flex items-center gap-7'>
           <ul className='flex text-[13px] gap-7 align-items'>
-            <Link
-              href='#home'
-              onClick={(e) => handleScroll(e)}
-              className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
-            >
-              <li>Home</li>
-            </Link>
-            <Link
-              href='#about'
-              onClick={(e) => handleScroll(e)}
-              className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
-            >
-              <li> About</li>
-            </Link>
-            <Link
-              href='#work'
-              onClick={(e) => handleScroll(e)}
-              className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
-            >
-              <li> Experience</li>
-            </Link>
-            <Link
-              href='#project'
-              onClick={(e) => handleScroll(e)}
-              className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
-            >
-              <li> Work</li>
-            </Link>
-            <Link
-              href='#contact'
-              onClick={(e) => handleScroll(e)}
-              className='flex item-center gap-1 font-medium text-textDark hover:text-textGreen cursor-pointer duration-300 nav-link'
-            >
-              <li> Contact</li>
-            </Link>
+            {navList.map((nav) => {
+              return (
+                <Link
+                  href={nav.link}
+                  onClick={(e) => handleScroll(e)}
+                  className='flex item-center gap-1 font-medium text-navBarText hover:text-textGreen cursor-pointer duration-300 nav-link'
+                >
+                  <li>{nav.name}</li>
+                </Link>
+              );
+            })}
           </ul>
 
-          {!isMobile && <ToggleButton className={''} />}
+          {!isMobile && (
+            <div>
+              <ToggleButton className={''} />
+              <div className='absolute top-full mt-2 -translate-x-1/2'>
+                <Toast
+                  message='Now with theme switch!'
+                  show={showToast}
+                  onClose={() => setShowToast(false)}
+                />
+              </div>
+            </div>
+          )}
 
           <a
             href='https://drive.google.com/file/d/1p6AWhScoVQ1PLL5625mK-NbTgeFfBfkR/view?usp=sharing'
@@ -115,13 +152,13 @@ export default function Navbar() {
         {showMenu && (
           <div
             ref={(node) => (ref.current = node)}
-            className='absolute mdl:hidden top-0 right-0 w-full h-screen bg-black bg-opacity-50 flex fkex-col items-end'
+            className='fixed mdl:hidden top-0 right-0 w-full h-screen bg-black bg-opacity-50 flex fkex-col items-end'
           >
             <motion.div
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className='w-[80%] h-full overflow-y-scroll scrollbarHide bg-bodyColor flex flex-col items-center px-4 py-10 relative'
+              className='w-[100%] overflow-y-scroll scrollbarHide bg-bodyColor flex flex-col items-center px-4 py-10 relative bg-[var(--body-color)] rounded-t-[32px] border border-[#4b4b4b] h-[60%]'
             >
               <MdOutlineClose
                 onClick={() => setShowMenu(false)}
@@ -129,109 +166,30 @@ export default function Navbar() {
               />
               <div className='flex flex-col items-center gap-7'>
                 <ul className='flex flex-col text-base gap-7 '>
-                  <Link
-                    className='flex flex-col text-base gap-7'
-                    href='#home'
-                    onClick={(e) => handleScroll(e)}
-                  >
-                    <motion.li
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: -10, opacity: 1 }}
-                      transition={{
-                        duration: 0.2,
-                        delay: 0.1,
-                        ease: 'easeIn',
-                      }}
-                    >
-                      <span>01.</span>Home
-                    </motion.li>
-                  </Link>
-                  <Link
-                    className='flex flex-col text-base gap-7'
-                    href='#about'
-                    onClick={(e) => handleScroll(e)}
-                  >
-                    <motion.li
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: -10, opacity: 1 }}
-                      transition={{
-                        duration: 0.2,
-                        delay: 0.1,
-                        ease: 'easeIn',
-                      }}
-                    >
-                      <span>02.</span>About
-                    </motion.li>
-                  </Link>
-                  <Link
-                    className='flex flex-col text-base gap-7'
-                    href='#work'
-                    onClick={(e) => handleScroll(e)}
-                  >
-                    <motion.li
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: -10, opacity: 1 }}
-                      transition={{
-                        duration: 0.2,
-                        delay: 0.1,
-                        ease: 'easeIn',
-                      }}
-                    >
-                      <span>03.</span>Work
-                    </motion.li>
-                  </Link>
-                  <Link
-                    className='flex flex-col text-base gap-7'
-                    href='#project'
-                    onClick={(e) => handleScroll(e)}
-                  >
-                    <motion.li
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: -10, opacity: 1 }}
-                      transition={{
-                        duration: 0.2,
-                        delay: 0.1,
-                        ease: 'easeIn',
-                      }}
-                    >
-                      <span>04.</span>Project
-                    </motion.li>
-                  </Link>
-                  <Link
-                    className='flex flex-col text-base gap-7'
-                    href='#contact'
-                    onClick={(e) => handleScroll(e)}
-                  >
-                    <motion.li
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: -10, opacity: 1 }}
-                      transition={{
-                        duration: 0.2,
-                        delay: 0.1,
-                        ease: 'easeIn',
-                      }}
-                    >
-                      <span>05.</span>Contact
-                    </motion.li>
-                  </Link>
+                  {navList.map((nav) => {
+                    return (
+                      <Link
+                        className={`flex flex-col text-base gap-7 justify-center items-center rounded-full p-[12px] w-[150px] translate-x-[-10px] translate-z-0 ${
+                          nav.highlight ? 'border border-textGreen' : ''
+                        }`}
+                        href={nav.link}
+                        onClick={(e) => handleScroll(e)}
+                      >
+                        <motion.li
+                          initial={{ x: 20, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{
+                            duration: 0.2,
+                            delay: 0.1,
+                            ease: 'easeIn',
+                          }}
+                        >
+                          {nav.name}
+                        </motion.li>
+                      </Link>
+                    );
+                  })}
                 </ul>
-                <a
-                  href='https://drive.google.com/file/d/1g8SJCWkpZ5uVGmrElD1ytoKQRDz554xU/view?usp=sharing'
-                  target='_blank'
-                >
-                  <motion.button
-                    className='w-32 h-10 rounded-md text-textGreen text-[13px] border border-textGreen hover:bg-hoverColor duration-300'
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                      duration: 0.2,
-                      ease: 'easeIn',
-                    }}
-                  >
-                    {' '}
-                    Resume
-                  </motion.button>
-                </a>
               </div>
               <div className='flex gap-6 mt-8'>
                 <motion.a
