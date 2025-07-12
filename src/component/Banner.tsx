@@ -1,7 +1,6 @@
 'use client';
 import { animate } from 'animejs';
 import { useEffect } from 'react';
-
 export default function Banner() {
   useEffect(() => {
     // Animate the entire banner container
@@ -18,11 +17,7 @@ export default function Banner() {
         { value: '-2.75rem', duration: 1000, easing: 'easeOutExpo' },
         { value: 0, duration: 800, delay: 100, easing: 'easeOutBounce' },
       ],
-      rotate: {
-        value: '-1turn',
-        duration: 1000,
-        delay: 0,
-      },
+      rotate: [{ value: -360, duration: 1000, delay: 0 }],
       delay: (_, i) => i * 50,
       easing: 'inOutCirc',
     });
@@ -45,7 +40,6 @@ export default function Banner() {
       </h2>
 
       <span className='text-textDark mt-2 lgl:mt-4'>Full Stack Developer</span>
-
       <p className='text-base md:max-w-[650px] text-textDark font-medium'>
         I am a software developer with 4 years of experiences, dedicated to
         translating innovative ideas into&nbsp;
@@ -64,7 +58,7 @@ export default function Banner() {
       </p>
 
       <a
-        href='https://drive.google.com/file/d/1p6AWhScoVQ1PLL5625mK-NbTgeFfBfkR/view'
+        href='https://drive.google.com/file/d/1ULlDXI-S_j3Ew7zrtkWQKccPBObsFHLu/view?usp=sharing'
         target='_blank'
       >
         <button className='w-52 h-14 text-sm font-titleFont border border-textGreen rounded-md text-textGreen tracking-wide hover:bg-hoverColor duration-300'>

@@ -83,7 +83,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className='h-20 shadow-navbarShadow flex lg:h=[12vh] sticky top-0 z-60 bg-bodyColor px-8 z-300 navbar w-[90%] mx-auto mt-5 border border-[rgba(76,78,79,0.7)] rounded-full custom-bg'>
+    <div className='h-20 shadow-navbarShadow flex lg:h=[12vh] sticky top-0 z-60 bg-bodyColor px-8 sm:pr-0 z-300 navbar w-[90%] mx-auto mt-5 border border-[rgba(76,78,79,0.7)] rounded-full custom-bg'>
       <Link href='/' className='w-[50%] flex items-center'>
         <Image
           className='rounded-lg object-contain h-[40px]'
@@ -93,16 +93,7 @@ export default function Navbar() {
           height={40}
         />
       </Link>
-      <div className='flex max-w-container h-full mx-auto py-1 font-titleFont flex items-center justify-between '>
-        {!isMobile && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* <Image className="w-14" src={logo} alt="logo"></Image> */}
-          </motion.div>
-        )}
+      <div className='flex max-w-container h-full mx-auto py-1 font-titleFont flex items-center justify-between gap-3'>
         <div className='hidden mdl:inline-flex items-center gap-7'>
           <ul className='flex text-[13px] gap-7 align-items'>
             {navList.map((nav) => {
@@ -132,7 +123,7 @@ export default function Navbar() {
           )}
 
           <a
-            href='https://drive.google.com/file/d/1p6AWhScoVQ1PLL5625mK-NbTgeFfBfkR/view?usp=sharing'
+            href='https://drive.google.com/file/d/1ULlDXI-S_j3Ew7zrtkWQKccPBObsFHLu/view?usp=sharing?usp=sharing'
             target='_blank'
           >
             <button className='border border-textGreen rounded-md text-textGreen text-[13px] px-6 py-3 hover:bg-hoverColor duration-200'>

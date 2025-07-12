@@ -22,7 +22,6 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ className }) => {
       html.classList.add('dark');
       html.classList.remove('light');
 
-      console.log(themeIcon, 'themeIcons');
       if (themeIcon) {
         themeIcon.textContent = '🌙'; // Moon icon for dark mode
       }
