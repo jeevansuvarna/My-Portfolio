@@ -41,7 +41,7 @@ export default function Banner() {
 
       <span className='text-textDark mt-2 lgl:mt-4'>Full Stack Developer</span>
       <p className='text-base md:max-w-[650px] text-textDark font-medium'>
-        I am a software developer with 4 years of experiences, dedicated to
+        I am a software developer with 4+ years of experiences, dedicated to
         translating innovative ideas into&nbsp;
         <span className='text-textGreen underline-transition text-textUnderline'>
           efficient
