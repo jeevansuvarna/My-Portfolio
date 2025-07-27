@@ -6,56 +6,23 @@ import { project1, project2, project3, project4 } from '@/assets';
 import { TbBrandGithub } from 'react-icons/tb';
 import { RxOpenInNewWindow } from 'react-icons/rx';
 import useScrollReveal from '@/hooks/useScrollReveal';
-
+import { useEffect, useState } from 'react';
+import { fetchRemoteConfig } from '../helper/firebase';
 export default function Projects() {
   const { ref, isVisible } = useScrollReveal();
+  const [projects, setProjects] = useState<any>([]);
 
-  const projects = [
-    {
-      id: 1,
-      title: 'Portfolio Website',
-      description:
-        'My personal website, inspired by Brittany Chiang. It displays my experiences, skills, and projects.',
-      tech: ['Nextjs', 'TailWind CSS', 'Netify'],
-      image: project2,
-      reverse: true,
-      github: 'https://github.com/jeevansuvarna/portfolio',
-      live: 'https://jeevan-suvarna.netlify.app/',
-    },
-    {
-      id: 2,
-      title: 'Spotilytics',
-      description:
-        '🎧 Built Spotilytics, a React-based web app that connects with your Spotify account to reveal personalized music analytics. 📊 It showcases top tracks, favorite artists, playlists, and visual charts based on your listening habits. 🚀 Designed with a sleek and responsive UI to make exploring your music journey both fun and insightful.',
-      tech: ['React', 'Spotify API', 'Netify', 'CSS'],
-      image: project4,
-      reverse: false,
-      github: 'https://github.com/jeevansuvarna/Spotilytics',
-      live: 'https://spotilytics.netlify.app/',
-    },
-    {
-      id: 3,
-      title: 'One For All Sort 💥⚡',
-      description:
-        'An application that visually illustrates well-known sorting algorithms such as merge sort, quick sort, and so on in action using bar graphs.',
-      tech: ['React js'],
-      image: project1,
-      reverse: true,
-      github: 'https://github.com/jeevansuvarna/SortingVisualizer',
-      live: 'https://sort-algoviz.netlify.app/',
-    },
-    {
-      id: 4,
-      title: 'Raijin - CLI Shortcut Manager ⚡🥷',
-      description:
-        'Raijin is a command-line tool that allows users to create and execute shortcuts for frequently used commands. It simplifies workflow automation by storing shortcuts in a JSON config file.',
-      tech: ['Go'],
-      image: project3,
-      reverse: false,
-      github: 'https://github.com/jeevansuvarna/Raijin-CLI-Shortcut',
-      live: 'https://drive.google.com/file/d/1uACUbO3cDhAtnaCvvDOr0-4B9h4DrFt3/view?usp=sharing',
-    },
-  ];
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const res = await fetchRemoteConfig();
+      console.log(res, 'res');
+      setProjects(res);
+    };
+
+    fetchProjects();
+  }, []);
+
+  // if (projects?.length) return <></>;
 
   return (
     <section
@@ -69,14 +36,14 @@ export default function Projects() {
       <Title title='Some Things I have Built' id='03' />
       {
         <div className='w-full flex gap-28 flex-col items-center justify-between'>
-          {projects.map((project, index) => (
+          {projects.map((project: any, index: any) => (
             <div
               key={project.id}
               className='w-full flex flex-col items-center justify-center gap-28 mt-10'
             >
               <div
                 className={`flex flex-col ${
-                  project.reverse ? 'xl:flex-row-reverse' : 'xl:flex-row'
+                  project?.reverse ? 'xl:flex-row-reverse' : 'xl:flex-row'
                 } gap-6`}
               >
                 {/* Image */}
@@ -91,6 +58,8 @@ export default function Projects() {
                       className='w-full h-full object-contain border border-[var(--text-underline)] rounded-md max-h-[332px]'
                       src={project.image}
                       alt={project.title}
+                      width={619}
+                      height={322}
                     />
                     <div className='hidden lgl:inline-block absolute w-full h-full bg-textGreen/20 rounded-md top-0 left-0 group-hover:bg-transparent duration-300'></div>
                   </div>
@@ -112,7 +81,7 @@ export default function Projects() {
                     {project.description}
                   </p>
                   <ul className='flex gap-2 text-xs md:text-sm font-titleFont tracking-wide md:gap-5 justify-between text-textDark'>
-                    {project.tech.map((tech, i) => (
+                    {project.tech.map((tech: any, i: any) => (
                       <li key={i}>{tech}</li>
                     ))}
                   </ul>

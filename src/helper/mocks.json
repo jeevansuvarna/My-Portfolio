@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Portfolio Website",
+    "description": "My personal website, inspired by Brittany Chiang. It displays my experiences, skills, and projects.",
+    "tech": ["Nextjs", "TailWind CSS", "Netify"],
+    "image": "https://drive.google.com/file/d/1TYKpl_1h2pzSd1-NHn5dLlhtbsFaqoBg/view?usp=sharing",
+    "reverse": true,
+    "github": "https://github.com/jeevansuvarna/portfolio",
+    "live": "https://jeevan-suvarna.netlify.app/"
+  },
+  {
+    "id": 2,
+    "title": "Spotilytics",
+    "description": "🎧 Built Spotilytics, a React-based web app that connects with your Spotify account to reveal personalized music analytics. 📊 It showcases top tracks, favorite artists, playlists, and visual charts based on your listening habits. 🚀 Designed with a sleek and responsive UI to make exploring your music journey both fun and insightful.",
+    "tech": ["React", "Spotify API", "Netify", "CSS"],
+    "image": "https://drive.google.com/file/d/11aQiV09kSN5ze8eOtfcyjeRUtbJZQNTt/view?usp=sharing",
+    "reverse": false,
+    "github": "https://github.com/jeevansuvarna/Spotilytics",
+    "live": "https://spotilytics.netlify.app/"
+  },
+  {
+    "id": 3,
+    "title": "One For All Sort 💥⚡",
+    "description": "An application that visually illustrates well-known sorting algorithms such as merge sort, quick sort, and so on in action using bar graphs.",
+    "tech": ["React js"],
+    "image": "https://drive.google.com/file/d/1Mnj7gyibmSCDATis4ee0eE_8eLL5JBu4/view?usp=sharing",
+    "reverse": true,
+    "github": "https://github.com/jeevansuvarna/SortingVisualizer",
+    "live": "https://sort-algoviz.netlify.app/"
+  },
+  {
+    "id": 4,
+    "title": "Raijin - CLI Shortcut Manager ⚡🥷",
+    "description": "Raijin is a command-line tool that allows users to create and execute shortcuts for frequently used commands. It simplifies workflow automation by storing shortcuts in a JSON config file.",
+    "tech": ["Go"],
+    "image": "https://drive.google.com/file/d/1NTrcfYznyyyh8y2Hf5QIFVLPVGQtpiED/view?usp=sharing",
+    "reverse": false,
+    "github": "https://github.com/jeevansuvarna/Raijin-CLI-Shortcut",
+    "live": "https://drive.google.com/file/d/1uACUbO3cDhAtnaCvvDOr0-4B9h4DrFt3/view?usp=sharing"
+  }
+]

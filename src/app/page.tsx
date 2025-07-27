@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <div className='h-[88vh] mx-auto p-4'>
-      {isLoading && <FullScreenLoader />}
+      {/* {isLoading && <FullScreenLoader />} */}
       <Banner />
       <About />
       <Work />
