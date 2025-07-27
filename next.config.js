@@ -1,6 +1,14 @@
-// next.config.js
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
-    domains: ['drive.google.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.pixelbin.io',
+        pathname: '**', // allows all paths under this hostname
+      },
+    ],
   },
 };
+
+module.exports = nextConfig;
