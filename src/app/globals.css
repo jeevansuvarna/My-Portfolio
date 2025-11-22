@@ -26,6 +26,11 @@
   --chat-send-text: #ffffff;
   --chat-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --chat-icon-bg: linear-gradient(135deg, #8f6149 0%, #a73131 100%);
+  /* Initials Avatar - Light */
+  --initials-bg: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  --initials-text: linear-gradient(135deg, #8f6149 0%, #a73131 100%);
+  --initials-glow: rgba(143, 97, 73, 0.3);
+  --initials-border: rgba(143, 97, 73, 0.2);
 }
 
 .dark {
@@ -52,6 +57,11 @@
   --chat-send-text: #1e1e2e;
   --chat-shadow: 0 25px 50px -12px rgba(0, 255, 255, 0.15);
   --chat-icon-bg: linear-gradient(135deg, #00d4d4 0%, #00a3a3 100%);
+  /* Initials Avatar - Dark */
+  --initials-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  --initials-text: linear-gradient(135deg, #00ffff 0%, #00d4d4 100%);
+  --initials-glow: rgba(0, 255, 255, 0.3);
+  --initials-border: rgba(0, 255, 255, 0.2);
 }
 
 .active {
@@ -624,4 +634,258 @@ body {
 .dark .toast-close:hover {
   background: rgba(0, 255, 255, 0.2);
   color: #00ffff;
+}
+
+/* ============================================
+   Initials Avatar Styles
+   ============================================ */
+.initials-avatar {
+  background: var(--initials-bg);
+  border: 2px solid var(--initials-border);
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.initials-avatar::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  padding: 3px;
+  background: var(--initials-text);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.group:hover .initials-avatar::before {
+  opacity: 1;
+}
+
+.initials-text {
+  background: var(--initials-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.group:hover .initials-text {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 20px var(--initials-glow));
+}
+
+.initials-glow {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: var(--initials-glow);
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.group:hover .initials-glow {
+  opacity: 1;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Animated border gradient */
+.initials-avatar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--text-green),
+    transparent 30%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  animation: rotate-border 3s linear infinite;
+}
+
+.group:hover .initials-avatar::after {
+  opacity: 0.3;
+}
+
+@keyframes rotate-border {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   Logo Styles
+   ============================================ */
+.logo-container {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+/* Animated border drawing effect */
+.logo-container::before,
+.logo-container::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.logo-container::before {
+  background: linear-gradient(90deg, var(--logo-border-color) 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px;
+  transition: background-position 0.6s ease;
+}
+
+.logo-container::after {
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: conic-gradient(from 0deg, var(--logo-border-color), var(--logo-border-color-alt), var(--logo-border-color)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logo-container:hover::before {
+  background-position: 0 0;
+}
+
+.logo-container:hover::after {
+  opacity: 1;
+  animation: logo-border-draw 1.5s linear infinite;
+}
+
+@keyframes logo-border-draw {
+  from {
+    background: conic-gradient(from 0deg, var(--logo-border-color), var(--logo-border-color-alt), var(--logo-border-color)) border-box;
+  }
+  to {
+    background: conic-gradient(from 360deg, var(--logo-border-color), var(--logo-border-color-alt), var(--logo-border-color)) border-box;
+  }
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.logo-highlight {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+}
+
+.logo-container:hover .logo-highlight {
+  opacity: 1;
+}
+
+.logo-container:hover .logo-text {
+  transform: scale(1.1);
+}
+
+/* Light mode logo */
+.light .logo-container {
+  --logo-border-color: #8f6149;
+  --logo-border-color-alt: #a73131;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  box-shadow: 0 4px 12px rgba(143, 97, 73, 0.15);
+}
+
+.light .logo-text {
+  background: linear-gradient(135deg, #8f6149 0%, #a73131 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light .logo-highlight {
+  background: radial-gradient(circle at center, rgba(143, 97, 73, 0.15) 0%, transparent 70%);
+}
+
+.light .logo-container:hover {
+  box-shadow: 0 8px 24px rgba(143, 97, 73, 0.25);
+}
+
+/* Dark mode logo */
+.dark .logo-container {
+  --logo-border-color: #00ffff;
+  --logo-border-color-alt: #00a3a3;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.15);
+}
+
+.dark .logo-text {
+  background: linear-gradient(135deg, #00ffff 0%, #00d4d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.dark .logo-highlight {
+  background: radial-gradient(circle at center, rgba(0, 255, 255, 0.15) 0%, transparent 70%);
+}
+
+.dark .logo-container:hover {
+  box-shadow: 0 8px 24px rgba(0, 255, 255, 0.3);
 }

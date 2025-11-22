@@ -1,9 +1,9 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import fs from 'fs';
 import path from 'path';
-const genAI = new GoogleGenerativeAI('AIzaSyB_dkQj4gykA-Y2JN3pBanjGsxHN73hv_E');
 
 export async function POST(req) {
+  const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API_KEY);
   const { message } = await req.json();
   const resumePath = path.join(process.cwd(), 'src/data/resume.json');
   const resumeText = fs.readFileSync(resumePath, 'utf-8');

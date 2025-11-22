@@ -9,8 +9,6 @@ import ToggleButton from './ToggleButton';
 import { detectMobileWidth } from '../helper/utils.js';
 import { SiLeetcode } from 'react-icons/si';
 import Toast from './common/toatMessage';
-import Image from 'next/image';
-import logo from '../assets/images/logo2.png';
 export default function Navbar() {
   const ref = useRef<string | any>();
   const [showMenu, setShowMenu] = useState(false);
@@ -85,13 +83,10 @@ export default function Navbar() {
   return (
     <div className='h-20 shadow-navbarShadow flex lg:h=[12vh] sticky top-0 z-60 bg-bodyColor px-8 sm:pr-0 z-300 navbar w-[90%] mx-auto mt-5 border border-[rgba(76,78,79,0.7)] rounded-full custom-bg'>
       <Link href='/' className='w-[50%] flex items-center'>
-        <Image
-          className='rounded-lg object-contain h-[40px]'
-          src={logo}
-          alt='profilImg'
-          width={60}
-          height={40}
-        />
+        <div className='logo-container'>
+          <span className='logo-text'>JS</span>
+          <div className='logo-highlight'></div>
+        </div>
       </Link>
       <div className='flex max-w-container h-full mx-auto py-1 font-titleFont flex items-center justify-between gap-3'>
         <div className='hidden mdl:inline-flex items-center gap-7'>
