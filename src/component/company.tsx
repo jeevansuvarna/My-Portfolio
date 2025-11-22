@@ -10,7 +10,7 @@ export default function Company() {
         </span>
       </h3>
       <p className='text-sm mt-1 font-medium text-textDark'>
-        July 2021 - Present
+        July 2021 - December 2025
       </p>
       <ul className='mt-6 flex flex-col gap-4'>
         <li className='text-base flex gap-2 text-textDark'>
@@ -18,14 +18,17 @@ export default function Company() {
             <TiArrowForward />
           </span>
           <div>
-            Led the successful migration of a large-scale e-commerce platform
-            from{' '}
+            Led the successful migration of a large-scale e-commerce Website -{' '}
+            <a href='https://www.tirabeauty.com/' target='_blank' className='text-textGreen underline-transition text-textUnderline'>
+              TiraBeauty
+            </a> {' '}
+            from {' '}
             <span className='text-textGreen underline-transition text-textUnderline'>
               Vue.js to React
             </span>
             , significantly improving performance, scalability, and SEO.
-            Achieved up to{' '}
-            <strong className='text-textGreen'>80% enhancement</strong> in web
+            Achieved up to
+            <strong className='text-textGreen'>{' '}80% enhancement</strong> in web
             performance and user experience.
           </div>
         </li>

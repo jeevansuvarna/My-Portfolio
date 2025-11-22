@@ -143,102 +143,79 @@ export default function Navbar() {
         {showMenu && (
           <div
             ref={(node) => (ref.current = node)}
-            className='fixed mdl:hidden top-0 right-0 w-full h-screen bg-black bg-opacity-50 flex fkex-col items-end'
+            onClick={(e) => e.target === e.currentTarget && setShowMenu(false)}
+            className='fixed mdl:hidden inset-0 w-full h-full bg-black/60 backdrop-blur-sm flex flex-col justify-end z-[1000]'
           >
             <motion.div
-              initial={{ x: 20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className='w-[100%] overflow-y-scroll scrollbarHide bg-bodyColor flex flex-col items-center px-4 py-10 relative bg-[var(--body-color)] rounded-t-[32px] border border-[#4b4b4b] h-[60%]'
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className='mobile-menu-sheet w-full bg-[var(--body-color)] rounded-t-[28px] border-t border-x border-[var(--text-green)]/30 shadow-2xl'
             >
-              <MdOutlineClose
+              {/* Drag handle */}
+              <div className='flex justify-center pt-3 pb-2'>
+                <div className='w-10 h-1 bg-textDark/40 rounded-full'></div>
+              </div>
+
+              {/* Close button */}
+              <button
                 onClick={() => setShowMenu(false)}
-                className='text-3xl text-textGreen cursor-pointer hover:text-red-500 absolute top-4 right-4'
-              />
-              <div className='flex flex-col items-center gap-7'>
-                <ul className='flex flex-col text-base gap-7 '>
-                  {navList.map((nav) => {
-                    return (
+                className='absolute top-4 right-4 w-8 h-8 rounded-full bg-textGreen/10 flex items-center justify-center text-textGreen hover:bg-textGreen/20 transition-colors'
+              >
+                <MdOutlineClose className='text-xl' />
+              </button>
+
+              {/* Navigation Links */}
+              <div className='flex flex-col items-center gap-2 px-6 pt-4 pb-6'>
+                <ul className='flex flex-col text-base gap-1 w-full'>
+                  {navList.map((nav, index) => (
+                    <motion.div
+                      key={nav.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
                       <Link
-                        className={`flex flex-col text-base gap-7 justify-center items-center rounded-full p-[12px] w-[150px] translate-x-[-10px] translate-z-0 ${
-                          nav.highlight ? 'border border-textGreen' : ''
+                        className={`flex items-center justify-center py-4 px-6 rounded-2xl text-center font-medium transition-all duration-200 ${
+                          nav.highlight
+                            ? 'bg-textGreen/10 border border-textGreen text-textGreen'
+                            : 'hover:bg-textGreen/5 text-textLight'
                         }`}
                         href={nav.link}
                         onClick={(e) => handleScroll(e)}
                       >
-                        <motion.li
-                          initial={{ x: 20, opacity: 0 }}
-                          animate={{ x: 0, opacity: 1 }}
-                          transition={{
-                            duration: 0.2,
-                            delay: 0.1,
-                            ease: 'easeIn',
-                          }}
-                        >
-                          {nav.name}
-                        </motion.li>
+                        <li className='list-none'>{nav.name}</li>
                       </Link>
-                    );
-                  })}
+                    </motion.div>
+                  ))}
                 </ul>
-              </div>
-              <div className='flex gap-6 mt-8'>
-                <motion.a
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 1, ease: 'easeIn' }}
-                  href='https://github.com/jeevansuvarna'
-                  target='_blank'
-                >
-                  <span
-                    className='w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen text-zinc-200 rounded-full inline flex
-                                        items-center justify-center hover;text-textGreen cursor-pointer hover:-translate-y-2 transitionall duration-300'
-                  >
-                    <VscGithubAlt />
-                  </span>
-                </motion.a>
-                <motion.a
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 1, ease: 'easeIn' }}
-                  href='https://leetcode.com/u/jeevansuvarna71/'
-                  target='_blank'
-                >
-                  <span
-                    className='w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen text-zinc-200 rounded-full inline flex
-                                        items-center justify-center hover;text-textGreen cursor-pointer hover:-translate-y-2 transitionall duration-300'
-                  >
-                    <SiLeetcode />
-                  </span>
-                </motion.a>
-                <motion.a
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 1, ease: 'easeIn' }}
-                  href='https://www.instagram.com/jeevaaannnn?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr'
-                  target='_blank'
-                >
-                  <span
-                    className='w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen text-zinc-200 rounded-full inline flex
-                                        items-center justify-center hover;text-textGreen cursor-pointer hover:-translate-y-2 transitionall duration-300'
-                  >
-                    <LuInstagram />
-                  </span>
-                </motion.a>
-                <motion.a
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 1, ease: 'easeIn' }}
-                  href='https://www.linkedin.com/in/jeevan-suvarna-741b19186/'
-                  target='_blank'
-                >
-                  <span
-                    className='w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen text-zinc-200 rounded-full inline flex
-                                        items-center justify-center hover;text-textGreen cursor-pointer hover:-translate-y-2 transitionall duration-300'
-                  >
-                    <LuLinkedin />
-                  </span>
-                </motion.a>
+
+                {/* Divider */}
+                <div className='w-16 h-[1px] bg-textDark/20 my-4'></div>
+
+                {/* Social Icons */}
+                <div className='flex gap-4'>
+                  {[
+                    { href: 'https://github.com/jeevansuvarna', icon: <VscGithubAlt />, label: 'github' },
+                    { href: 'https://leetcode.com/u/jeevansuvarna71/', icon: <SiLeetcode />, label: 'leetcode' },
+                    { href: 'https://www.instagram.com/jeevaaannnn?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr', icon: <LuInstagram />, label: 'instagram' },
+                    { href: 'https://www.linkedin.com/in/jeevan-suvarna-741b19186/', icon: <LuLinkedin />, label: 'linkedin' },
+                  ].map((social, index) => (
+                    <motion.a
+                      key={social.label}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + index * 0.05 }}
+                      href={social.href}
+                      target='_blank'
+                    >
+                      <span className={`social-icon ${social.label} w-11 h-11 text-xl rounded-full inline-flex items-center justify-center cursor-pointer`}>
+                        {social.icon}
+                      </span>
+                    </motion.a>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>

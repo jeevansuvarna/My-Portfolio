@@ -11,6 +11,21 @@
   --text-underline: #a73131;
   --shadowColor: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
   --nav-text-color: #003366;
+  /* Chat UI Colors - Light */
+  --chat-bg: #ffffff;
+  --chat-header-bg: linear-gradient(135deg, #8f6149 0%, #a73131 100%);
+  --chat-header-text: #ffffff;
+  --chat-user-bubble: linear-gradient(135deg, #8f6149 0%, #a73131 100%);
+  --chat-user-text: #ffffff;
+  --chat-ai-bubble: #f3f4f6;
+  --chat-ai-text: #1f2937;
+  --chat-input-bg: #f9fafb;
+  --chat-input-border: #e5e7eb;
+  --chat-input-focus: #8f6149;
+  --chat-send-bg: linear-gradient(135deg, #8f6149 0%, #a73131 100%);
+  --chat-send-text: #ffffff;
+  --chat-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --chat-icon-bg: linear-gradient(135deg, #8f6149 0%, #a73131 100%);
 }
 
 .dark {
@@ -22,6 +37,21 @@
   --text-underline: #00ffff;
   --shadowColor: 0px 4px 10px rgba(255, 255, 255, 0.5);
   --nav-text-color: #ffffff;
+  /* Chat UI Colors - Dark */
+  --chat-bg: #1e1e2e;
+  --chat-header-bg: linear-gradient(135deg, #00d4d4 0%, #00a3a3 100%);
+  --chat-header-text: #1e1e2e;
+  --chat-user-bubble: linear-gradient(135deg, #00d4d4 0%, #00a3a3 100%);
+  --chat-user-text: #1e1e2e;
+  --chat-ai-bubble: #2a2a3e;
+  --chat-ai-text: #e2e8f0;
+  --chat-input-bg: #2a2a3e;
+  --chat-input-border: #3f3f5a;
+  --chat-input-focus: #00ffff;
+  --chat-send-bg: linear-gradient(135deg, #00d4d4 0%, #00a3a3 100%);
+  --chat-send-text: #1e1e2e;
+  --chat-shadow: 0 25px 50px -12px rgba(0, 255, 255, 0.15);
+  --chat-icon-bg: linear-gradient(135deg, #00d4d4 0%, #00a3a3 100%);
 }
 
 .active {
@@ -170,4 +200,428 @@ body {
 
 *::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
+}
+
+/* Chat Widget Styles */
+.chat-container {
+  background: var(--chat-bg);
+  box-shadow: var(--chat-shadow);
+  border: 1px solid var(--chat-input-border);
+  backdrop-filter: blur(10px);
+}
+
+/* Mobile full-screen chat */
+@media (max-width: 767px) {
+  .chat-container {
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+}
+
+.chat-header {
+  background: var(--chat-header-bg);
+  color: var(--chat-header-text);
+}
+
+.chat-user-bubble {
+  background: var(--chat-user-bubble);
+  color: var(--chat-user-text);
+  border-radius: 18px 18px 4px 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-ai-bubble {
+  background: var(--chat-ai-bubble);
+  color: var(--chat-ai-text);
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.chat-input {
+  background: var(--chat-input-bg);
+  border: 1px solid var(--chat-input-border);
+  color: var(--chat-ai-text);
+  transition: all 0.2s ease;
+}
+
+.chat-input:focus {
+  border-color: var(--chat-input-focus);
+  box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+}
+
+.chat-send-btn {
+  background: var(--chat-send-bg);
+  color: var(--chat-send-text);
+  transition: all 0.2s ease;
+}
+
+.chat-send-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.chat-send-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.chat-icon-btn {
+  background: var(--chat-icon-bg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.chat-icon-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Chat message animation */
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-message {
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+/* Typing indicator animation */
+@keyframes typingBounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+}
+
+.typing-dot {
+  animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Social Icons Styles */
+.social-icon {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--text-green), var(--text-underline));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-icon:hover::before {
+  opacity: 1;
+}
+
+.light .social-icon {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #495057;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.light .social-icon:hover {
+  background: linear-gradient(135deg, #8f6149 0%, #a73131 100%);
+  color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(143, 97, 73, 0.3);
+}
+
+.dark .social-icon {
+  background: rgba(100, 255, 218, 0.1);
+  color: var(--text-light);
+}
+
+.dark .social-icon:hover {
+  background: linear-gradient(135deg, #00d4d4 0%, #00a3a3 100%);
+  color: #1e1e2e;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.3);
+}
+
+/* Brand color hovers (optional) */
+.social-icon.github:hover {
+  background: linear-gradient(135deg, #333 0%, #24292e 100%) !important;
+  color: #ffffff !important;
+}
+
+.social-icon.linkedin:hover {
+  background: linear-gradient(135deg, #0077b5 0%, #005582 100%) !important;
+  color: #ffffff !important;
+}
+
+.social-icon.instagram:hover {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+  color: #ffffff !important;
+}
+
+.social-icon.leetcode:hover {
+  background: linear-gradient(135deg, #ffa116 0%, #ff8c00 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Mobile Menu Sheet */
+.mobile-menu-sheet {
+  padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 16px);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mobile-menu-sheet {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
+  }
+}
+
+/* Skeleton Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+
+.light .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 20%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.4) 80%,
+    transparent 100%
+  );
+}
+
+.dark .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.05) 20%,
+    rgba(0, 255, 255, 0.15) 50%,
+    rgba(0, 255, 255, 0.05) 80%,
+    transparent 100%
+  );
+}
+
+/* Skeleton base for light/dark mode */
+.light .skeleton-base,
+.light [class*="from-gray"] {
+  --tw-gradient-from: #e5e7eb;
+  --tw-gradient-via: #f3f4f6;
+  --tw-gradient-to: #e5e7eb;
+}
+
+.dark .skeleton-base,
+.dark [class*="from-gray"] {
+  --tw-gradient-from: #1f2937;
+  --tw-gradient-via: #374151;
+  --tw-gradient-to: #1f2937;
+}
+
+/* Animated CTA Buttons */
+.btn-animated {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+.btn-animated::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.btn-animated:hover::before {
+  left: 100%;
+}
+
+.btn-animated::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--text-green);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+  z-index: -2;
+}
+
+.btn-animated:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.btn-animated:hover {
+  color: var(--body-color);
+  border-color: var(--text-green);
+  box-shadow: 0 0 20px rgba(var(--glow-color), 0.4);
+}
+
+/* Light mode button */
+.light .btn-animated {
+  --glow-color: 143, 97, 73;
+}
+
+.light .btn-animated:hover {
+  box-shadow: 0 8px 25px rgba(143, 97, 73, 0.35);
+}
+
+/* Dark mode button */
+.dark .btn-animated {
+  --glow-color: 0, 255, 255;
+}
+
+.dark .btn-animated:hover {
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.35);
+}
+
+/* Pulse animation on idle */
+@keyframes subtlePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(var(--glow-color), 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(var(--glow-color), 0);
+  }
+}
+
+.btn-animated-pulse {
+  animation: subtlePulse 2.5s infinite;
+}
+
+/* Arrow bounce for resume button */
+@keyframes arrowBounce {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+.btn-animated:hover .btn-arrow {
+  animation: arrowBounce 0.6s ease infinite;
+}
+
+/* Wave effect for Say Hello */
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.btn-animated:hover .btn-wave {
+  animation: wave 1s ease;
+  display: inline-block;
+  transform-origin: 70% 70%;
+}
+
+/* Toast Notification Styles */
+.toast-container {
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.light .toast-container {
+  background: linear-gradient(135deg, rgba(143, 97, 73, 0.95) 0%, rgba(167, 49, 49, 0.95) 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 32px rgba(143, 97, 73, 0.3);
+}
+
+.light .toast-icon {
+  color: #ffd700;
+}
+
+.light .toast-close {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.light .toast-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.dark .toast-container {
+  background: linear-gradient(135deg, rgba(0, 212, 212, 0.15) 0%, rgba(0, 163, 163, 0.15) 100%);
+  color: #e2e8f0;
+  border-color: rgba(0, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 255, 255, 0.15);
+}
+
+.dark .toast-icon {
+  color: #00ffff;
+}
+
+.dark .toast-close {
+  background: rgba(0, 255, 255, 0.1);
+  color: rgba(0, 255, 255, 0.8);
+}
+
+.dark .toast-close:hover {
+  background: rgba(0, 255, 255, 0.2);
+  color: #00ffff;
 }

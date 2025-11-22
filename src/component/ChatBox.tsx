@@ -1,6 +1,7 @@
 'use client';
 import { useState, useRef, useEffect, ChangeEvent } from 'react';
-import { LuMessageSquare } from 'react-icons/lu';
+import { LuMessageSquare, LuSend, LuX, LuSparkles } from 'react-icons/lu';
+import Toast from './common/toatMessage';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -11,18 +12,55 @@ interface ChatResponse {
   reply: string;
 }
 
+const quirkyToastMessages = [
+  "Try the New AI chat",
+  "Want to know about me? ",
+  "Z awakens... Ask wisely!",
+  "Hi There, Want to chat?",
+  "Z has entered the chat...",
+  "Ready to answer your queries!",
+];
+
 export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      text: "Hi!! I am Jeevan's AI assistant. How can I help you?",
+      text: "Hey there! I'm Z, Jeevan's AI assistant. Cursed with knowledge, blessed with answers. What would you like to know?",
     },
   ]);
   const [input, setInput] = useState<string>('');
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string>('');
 
-  const chatRef = useRef<HTMLDivElement>(null); // ref for chat box
+  const chatRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  // Show toast when user lands on the page
+  useEffect(() => {
+    // Small delay to let the page load first
+    const showTimer = setTimeout(() => {
+      const randomMessage = quirkyToastMessages[Math.floor(Math.random() * quirkyToastMessages.length)];
+      setToastMessage(randomMessage);
+      setShowToast(true);
+    }, 1500);
+
+    // Auto-dismiss after 4 seconds
+    const hideTimer = setTimeout(() => {
+      setShowToast(false);
+    }, 5500);
+
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
 
   // Close chat when clicking outside
   useEffect(() => {
@@ -66,7 +104,7 @@ export default function ChatWidget() {
       console.error('Error:', error);
       setMessages((prev) => [
         ...prev,
-        { role: 'assistant', text: 'Oops! Something went wrong.' },
+        { role: 'assistant', text: 'Oops! Something went wrong. Even dark wizards have bad days.' },
       ]);
     } finally {
       setIsLoading(false);
@@ -79,16 +117,26 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Floating Chat Icon */}
-      {/* Floating Chat Icon */}
+      {/* Toast Notification - positioned near chat icon */}
+      <div className='fixed bottom-20 md:bottom-24 right-4 md:right-16 z-[1001]'>
+        <Toast
+          message={toastMessage}
+          show={showToast}
+          onClose={() => setShowToast(false)}
+        />
+      </div>
+
       {/* Floating Chat Icon */}
       {!isOpen && (
         <button
-          onClick={() => setIsOpen(true)}
-          className='fixed bottom-6 right-6 textGreen p-4 mx-9 rounded-full shadow-lg hover:textGreen/80 transition z-[999] shake-updown'
+          onClick={() => {
+            setShowToast(false);
+            setIsOpen(true);
+          }}
+          className='fixed bottom-4 right-4 md:bottom-6 md:right-16 p-2 md:p-1 rounded-full z-[999] chat-icon-btn'
           aria-label='Open Chat'
         >
-          <span className='w-10 h-10 text-xl bg-hoverColor rounded-full inline-flex items-center justify-center hover:text-textGreen cursor-pointer hover:-translate-y-2 transition-all duration-300'>
+          <span className='w-8 h-8 md:w-12 md:h-12 text-lg md:text-2xl rounded-full inline-flex items-center justify-center text-white'>
             <LuMessageSquare />
           </span>
         </button>
@@ -97,68 +145,81 @@ export default function ChatWidget() {
       {/* Chat Box */}
       {isOpen && (
         <div
-          ref={chatRef} // attach ref
-          className='fixed bottom-6 right-6 w-80 bg-bodyColor border border-textGreen rounded-lg shadow-lg flex flex-col z-[999] min-w-[400px] h-[600px]'
+          ref={chatRef}
+          className='fixed inset-0 md:inset-auto md:bottom-6 md:right-6 w-full md:w-[420px] md:rounded-2xl flex flex-col z-[999] h-full md:h-[550px] overflow-hidden chat-container'
         >
           {/* Header */}
-          <div className='flex justify-between items-center p-3 border-b border-textUnderline'>
-            <h2 className='font-semibold textGreen'>Chat with Z - AI</h2>
+          <div className='flex justify-between items-center px-5 py-4 chat-header'>
+            <div className='flex items-center gap-3'>
+              <div className='w-10 h-10 rounded-full bg-white/20 flex items-center justify-center'>
+                <LuSparkles className='text-lg' />
+              </div>
+              <div>
+                <h2 className='font-bold text-lg'>Chat with Z</h2>
+                <p className='text-xs opacity-80'>AI Assistant</p>
+              </div>
+            </div>
             <button
               onClick={() => setIsOpen(false)}
-              className='text-textGreen hover:text-textUnderline'
+              className='w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors'
+              aria-label='Close Chat'
             >
-              ✖
+              <LuX className='text-lg' />
             </button>
           </div>
 
           {/* Messages */}
-          <div className='flex-1 p-4 overflow-y-auto h-64 textDark '>
+          <div className='flex-1 p-4 overflow-y-auto space-y-4'>
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={`my-1 ${
-                  msg.role === 'user' ? 'text-right' : 'text-left'
+                className={`chat-message flex ${
+                  msg.role === 'user' ? 'justify-end' : 'justify-start'
                 }`}
               >
-                <span
-                  className={`inline-block px-3 py-1 my-2 rounded-lg border ${
-                    msg.role === 'user'
-                      ? 'border-navBarText text-navBarText'
-                      : 'border-textDark text-textDark'
+                <div
+                  className={`max-w-[80%] px-4 py-3 text-sm leading-relaxed ${
+                    msg.role === 'user' ? 'chat-user-bubble' : 'chat-ai-bubble'
                   }`}
                 >
                   {msg.text}
-                </span>
+                </div>
               </div>
             ))}
 
-            {/* Loading indicator */}
+            {/* Typing indicator */}
             {isLoading && (
-              <div className='text-left my-1'>
-                <span className='inline-block px-3 py-1 my-2 rounded-lg border border-textDark text-textDark animate-pulse'>
-                  Let me think...
-                </span>
+              <div className='chat-message flex justify-start'>
+                <div className='chat-ai-bubble px-4 py-3 flex items-center gap-1'>
+                  <span className='typing-dot w-2 h-2 rounded-full bg-current opacity-60'></span>
+                  <span className='typing-dot w-2 h-2 rounded-full bg-current opacity-60'></span>
+                  <span className='typing-dot w-2 h-2 rounded-full bg-current opacity-60'></span>
+                </div>
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input */}
-          <div className='flex border-t border-textGreen p-2 gap-2'>
-            <input
-              value={input}
-              onChange={handleInputChange}
-              placeholder='Ask me about Jeevan...'
-              className='border border-textGreen flex-grow px-3 py-1 rounded textGreen bg-transparent focus:outline-none'
-              onKeyUp={(e) => e.key === 'Enter' && sendMessage()}
-              disabled={isLoading}
-            />
-            <button
-              onClick={sendMessage}
-              className='border border-textUnderline text-textUnderline px-4 py-1 rounded bg-transparent hover:text-textGreen hover:border-textGreen transition'
-              disabled={isLoading}
-            >
-              {isLoading ? '...' : 'Send'}
-            </button>
+          <div className='p-4 border-t border-[var(--chat-input-border)]'>
+            <div className='flex gap-3'>
+              <input
+                value={input}
+                onChange={handleInputChange}
+                placeholder='Ask me about Jeevan...'
+                className='chat-input flex-grow px-4 py-3 rounded-xl focus:outline-none text-sm'
+                onKeyUp={(e) => e.key === 'Enter' && sendMessage()}
+                disabled={isLoading}
+              />
+              <button
+                onClick={sendMessage}
+                className='chat-send-btn w-12 h-12 rounded-xl flex items-center justify-center'
+                disabled={isLoading}
+                aria-label='Send message'
+              >
+                <LuSend className='text-lg' />
+              </button>
+            </div>
           </div>
         </div>
       )}

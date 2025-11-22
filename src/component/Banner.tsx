@@ -61,8 +61,9 @@ export default function Banner() {
         href='https://drive.google.com/file/d/1ULlDXI-S_j3Ew7zrtkWQKccPBObsFHLu/view?usp=sharing'
         target='_blank'
       >
-        <button className='w-52 h-14 text-sm font-titleFont border border-textGreen rounded-md text-textGreen tracking-wide hover:bg-hoverColor duration-300'>
-          Resume
+        <button className='btn-animated w-52 h-14 text-sm font-titleFont border border-textGreen rounded-md text-textGreen tracking-wide flex items-center justify-center gap-2'>
+          <span>Resume</span>
+          <span className='btn-arrow'>→</span>
         </button>
       </a>
     </section>
