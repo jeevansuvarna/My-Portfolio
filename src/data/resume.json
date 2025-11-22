@@ -1,0 +1,147 @@
+{
+  "name": "Jeevan Suvarna",
+  "contact": {
+    "phone": "+91 8495002321",
+    "location": "Bengaluru, Karnataka, India",
+    "email": "jeevansuvarna71@gmail.com",
+    "linkedin": "https://linkedin.com/in/jeevan-suvarna-741b19186/",
+    "portfolio": "https://www.jeevan-suvarna.netlify.app"
+  },
+  "profile_summary": "Results-driven Software Development Engineer with 4+ years of experience in designing scalable applications, optimizing performance, and enhancing user experiences. Proficient in JavaScript, React, and Node.js, with a track record of delivering high-impact projects. Passionate about creating innovative solutions that drive business growth.",
+  "skills": {
+    "programming_languages": [
+      "JavaScript (ES6)",
+      "TypeScript",
+      "C++/C",
+      "HTML5",
+      "CSS3",
+      "LESS",
+      "Python"
+    ],
+    "frameworks_libraries": [
+      "React.js",
+      "Vue.js",
+      "Node.js",
+      "Next.js",
+      "Fastify",
+      "Redux",
+      "GraphQL",
+      "Kafka",
+      "Redis"
+    ],
+    "databases": ["MongoDB", "MySQL"],
+    "development_practices": [
+      "Unit Testing",
+      "Microservices",
+      "SPA",
+      "SSR",
+      "CSR",
+      "Debugging",
+      "MVC"
+    ],
+    "tools_platforms": [
+      "Docker",
+      "Git",
+      "Webpack",
+      "REST API",
+      "Jest",
+      "CI/CD Pipelines",
+      "Lighthouse",
+      "GTMetrix"
+    ],
+    "core_competencies": [
+      "System Design",
+      "Microservices",
+      "Performance Optimization",
+      "Data Structures",
+      "Algorithm",
+      "Problem Solving"
+    ],
+    "methodologies": ["Agile Scrum"]
+  },
+  "experience": [
+    {
+      "role": "Software Development Engineer - II",
+      "company": "Clover Bay Technologies Pvt Ltd",
+      "location": "Bangalore, KA",
+      "duration": "Jun 2021 - Present",
+      "responsibilities": [
+        "Led migration of a fully-fledged e-commerce platform from Vue.js to React, improving performance and scalability and enhancing SEO metrics by 90%.",
+        "Redesigned checkout flow from 3 steps to a single-page flow, boosting conversion rates and revenue by 40%.",
+        "Implemented user engagement features like personalized product recommendations and a point-based reward system, driving a 60% increase in customer interactions.",
+        "Designed and implemented a Backend-for-Frontend (BFF) architecture using Node.js and Fastify, improving server-side data handling and reducing front-end load by 45%.",
+        "Mentored junior developers through code reviews and guidance on best practices.",
+        "Collaborated in Agile teams with 85%+ unit test coverage using Jest."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Jio Reliance – Tira Beauty E-commerce Website",
+      "description": "Migrating the e-commerce platform from Vue.js to React with Redux and GraphQL, improving performance, scalability, and UX.",
+      "achievements": [
+        "Implemented SEO and performance optimization techniques (lazy loading, SSR to CSR hydration, image optimization) achieving 82% boost in web performance.",
+        "Developed an interactive blog feature with curated beauty articles and filters, integrated via Webflow.",
+        "Built API integrations, UI enhancements, and performance optimizations for a scalable application."
+      ],
+      "technologies": [
+        "VueJS",
+        "ReactJS",
+        "Redux",
+        "GraphQL",
+        "REST API",
+        "SPA",
+        "HTML5",
+        "LESS",
+        "SSR",
+        "CSR",
+        "CSS",
+        "Webpack",
+        "JavaScript",
+        "NodeJS",
+        "babel Debugging",
+        "Web Performance optimization techniques",
+        "Lighthouse",
+        "GTMetrix"
+      ]
+    },
+    {
+      "name": "Lyca Digital – Lyca Mobile Application",
+      "description": "Engineered Backend-for-Frontend (BFF) architecture for seamless data management across 21 countries.",
+      "achievements": [
+        "Optimized front-end performance, reducing page load time by 40% and increasing user retention by 25%.",
+        "Debugged critical production issues, improving system stability by 30%."
+      ],
+      "technologies": [
+        "Node.js",
+        "MVC",
+        "Typescript",
+        "Jest",
+        "Fastify",
+        "REST API",
+        "Debugging"
+      ]
+    },
+    {
+      "name": "Falabella – Vtex Admin App",
+      "description": "Developed a TypeScript SDK and admin application for Seller Center platform.",
+      "achievements": [
+        "Enabled seamless third-party app integration via modular, type-safe API wrapper.",
+        "Wrote unit tests for UI components with 85%+ coverage, ensuring bug-free user experience."
+      ],
+      "technologies": ["VTEX", "React JS", "React-Query", "Typescript"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "NMAM Institute of Technology, Nitte, Karnataka",
+      "degree": "B.E. in Information Science and Engineering",
+      "duration": "2017 - 2021",
+      "cgpa": "9.29/10"
+    }
+  ],
+  "achievements": [
+    "Recognized for Excellence in Codethon at Jio for outstanding performance and innovative solutions."
+  ],
+  "if_not_present_in_resume": "Oopsie! Brain.exe not loaded for that 😅 Mail Jeevan for the insider info!"
+}

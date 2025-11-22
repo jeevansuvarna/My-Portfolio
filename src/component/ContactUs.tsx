@@ -21,8 +21,9 @@ export default function Contact() {
         hi, My inbox is always open!{' '}
       </p>
       <a href='mailto:jeevansuvarna71@gmail.com'>
-        <button className='w-40 h-14 border border-textGreen mt-6 font-titleFont tet-sm text-textGreen tracking-wider rounded-md hover:bg-hoverColor duration-300'>
-          Say Hello !!
+        <button className='btn-animated btn-animated-pulse w-44 h-14 border border-textGreen mt-6 font-titleFont text-sm text-textGreen tracking-wider rounded-md flex items-center justify-center gap-2'>
+          <span className='btn-wave' role='img' aria-label='wave'>&#x1F44B;</span>
+          <span>Say Hello</span>
         </button>
       </a>
     </section>
