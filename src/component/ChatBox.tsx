@@ -21,6 +21,13 @@ const quirkyToastMessages = [
   "Ready to answer your queries!",
 ];
 
+const suggestedQuestions = [
+  "What's Jeevan's email?",
+  "Tell me about Jeevan",
+  "What are his skills?",
+  "Work experience?",
+];
+
 export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -33,6 +40,7 @@ export default function ChatWidget() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
+  const [showSuggestions, setShowSuggestions] = useState<boolean>(true);
 
   const chatRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -81,19 +89,21 @@ export default function ChatWidget() {
     };
   }, [isOpen]);
 
-  const sendMessage = async (): Promise<void> => {
-    if (!input.trim()) return;
+  const sendMessage = async (messageText?: string): Promise<void> => {
+    const textToSend = messageText || input;
+    if (!textToSend.trim()) return;
 
-    const newMsg: Message = { role: 'user', text: input };
+    const newMsg: Message = { role: 'user', text: textToSend };
     setMessages((prev) => [...prev, newMsg]);
     setInput('');
     setIsLoading(true);
+    setShowSuggestions(false);
 
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ message: textToSend }),
       });
 
       if (!res.ok) throw new Error('Failed to send message');
@@ -187,6 +197,21 @@ export default function ChatWidget() {
               </div>
             ))}
 
+            {/* Suggested Questions */}
+            {showSuggestions && !isLoading && (
+              <div className='flex flex-wrap gap-2 mt-2'>
+                {suggestedQuestions.map((question, index) => (
+                  <button
+                    key={index}
+                    onClick={() => sendMessage(question)}
+                    className='suggested-question-btn px-3 py-2 text-xs rounded-full border transition-all duration-200 hover:scale-105'
+                  >
+                    {question}
+                  </button>
+                ))}
+              </div>
+            )}
+
             {/* Typing indicator */}
             {isLoading && (
               <div className='chat-message flex justify-start'>
@@ -212,7 +237,7 @@ export default function ChatWidget() {
                 disabled={isLoading}
               />
               <button
-                onClick={sendMessage}
+                onClick={() => sendMessage()}
                 className='chat-send-btn w-12 h-12 rounded-xl flex items-center justify-center'
                 disabled={isLoading}
                 aria-label='Send message'

@@ -331,6 +331,41 @@ body {
   animation-delay: 0.4s;
 }
 
+/* Suggested Questions Styles */
+.suggested-question-btn {
+  background: var(--chat-input-bg);
+  border-color: var(--chat-input-border);
+  color: var(--chat-ai-text);
+}
+
+.suggested-question-btn:hover {
+  border-color: var(--text-green);
+  color: var(--text-green);
+  background: var(--hover-color);
+}
+
+.light .suggested-question-btn {
+  background: rgba(143, 97, 73, 0.05);
+  border-color: rgba(143, 97, 73, 0.3);
+  color: #8f6149;
+}
+
+.light .suggested-question-btn:hover {
+  background: rgba(143, 97, 73, 0.15);
+  border-color: #8f6149;
+}
+
+.dark .suggested-question-btn {
+  background: rgba(0, 255, 255, 0.05);
+  border-color: rgba(0, 255, 255, 0.3);
+  color: #00ffff;
+}
+
+.dark .suggested-question-btn:hover {
+  background: rgba(0, 255, 255, 0.15);
+  border-color: #00ffff;
+}
+
 /* Social Icons Styles */
 .social-icon {
   position: relative;
