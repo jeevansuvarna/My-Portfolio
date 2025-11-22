@@ -4,6 +4,7 @@ interface Props {
     title: string,
     id: string
 }
+
 export default function Title({ title, id }: Props) {
     return (
         <h2 className="font-titleFont font-semibold text-2xl flex items-center">
