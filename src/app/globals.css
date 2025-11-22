@@ -162,3 +162,12 @@ body {
 .animated-span:hover {
   animation: jiggle 0.6s ease-in-out;
 }
+/* Hide scrollbar for all browsers globally */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

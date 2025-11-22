@@ -1,6 +1,7 @@
 'use client';
 import About from '@/component/About';
 import Banner from '@/component/Banner';
+import ChatBox from '@/component/ChatBox';
 import Contact from '@/component/ContactUs';
 import Work from '@/component/Experience';
 import Projects from '@/component/Projects';
@@ -27,6 +28,7 @@ export default function Home() {
       <Work />
       <Projects />
       <Contact />
+      <ChatBox />
       <Footer />
     </div>
   );
