@@ -27,7 +27,7 @@ export async function POST(req) {
   } catch (err) {
     console.error('Gemini Error:', err);
     return Response.json({
-      reply: '⚠️ AI is sleeping right now. Try again later.',
+      reply: 'AI is sleeping right now. Try again later.',
     });
   }
 }
