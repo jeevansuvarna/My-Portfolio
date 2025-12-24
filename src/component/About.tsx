@@ -58,45 +58,29 @@ export default function About() {
             <span className='text-textGreen underline-transition text-textUnderline'>
               Jeevan Suvarna
             </span>
-            . I'm a dedicated <strong>Full-Stack Developer</strong> with over{' '}
-            <strong>3.5 years of experience</strong> crafting robust and
-            scalable digital solutions. My journey in web development began in
-            college back in 2016, when I started exploring{' '}
-            <strong>Node.js</strong> along with front-end technologies. Since
-            then, I’ve deepened my expertise in modern stacks like{' '}
-            <strong>JavaScript</strong>, <strong>TypeScript</strong>,{' '}
-            <strong>Vue.js</strong>, <strong>React</strong>,{' '}
-            <strong>Next.js</strong>, and <strong>Fastify</strong>.
+            . I am a{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              Full-Stack Developer{' '}
+            </span>
+            with over 4 years of experience designing and delivering robust,
+            scalable digital solutions across diverse industry verticals. 
+            <br></br>
+            <br></br>
+            Previously, I contributed to a fast-growing startup as a Frontend
+            Developer, where I architected high-performance, SEO-optimized, and
+            responsive user interfaces for e-commerce platforms and dynamic web
+            applications. My work focused on delivering seamless user
+            experiences while maintaining code quality and scalability.{' '}
+            <br></br>
+            <br></br>
+            Currently, I serve as a Full-Stack Developer at <span className='text-textGreen underline-transition text-textUnderline'>GE HealthCare</span>, where
+            I develop and maintain customer analytics and reporting systems. In
+            this role, I consistently drive improvements in application
+            performance, accessibility standards, and overall user experience,
+            ensuring that solutions meet both business requirements and end-user
+            needs
             <br />
             <br />
-            Currently, I’m part of a fast-growing startup, where I specialize in{' '}
-            <span className='text-textGreen underline-transition text-textUnderline'>
-              frontend development
-            </span>
-            —building <strong>high-performance</strong>,{' '}
-            <strong>SEO-friendly</strong>, and{' '}
-            <strong>responsive user interfaces</strong>. I’ve worked extensively
-            on <strong>e-commerce platforms</strong> and dynamic web
-            applications, consistently enhancing{' '}
-            <span className='text-textGreen underline-transition text-textUnderline'>
-              performance
-            </span>
-            ,{' '}
-            <span className='text-textGreen underline-transition text-textUnderline'>
-              accessibility
-            </span>
-            , and{' '}
-            <span className='text-textGreen underline-transition text-textUnderline'>
-              user experience{' '}
-            </span>
-            across projects.
-            <br />
-            <br />I thrive in environments that embrace modern frontend
-            architecture and love solving complex problems with clean,
-            maintainable code. Whether it’s improving a Lighthouse score,
-            architecting a scalable component system, or shipping features ahead
-            of schedule, I aim to create meaningful impact through technology.
-            🚀
           </p>
 
           <div>

@@ -1,14 +1,28 @@
 'use client';
 import { TiArrowForward } from 'react-icons/ti';
-export default function Company() {
+
+export default function Company({ workId }: { workId: number }) {
+  switch (workId) {
+    case 2:
+      return <Cloverbay />;
+    case 1:
+      return <GEHC />;
+    default:
+      return <Cloverbay />;
+  }
+}
+
+const Cloverbay = () => {
   return (
     <div>
       <h3>
-        Engineer{' '}
         <span className='text-textGreen tracking-wide underline-transition text-textUnderline'>
           Clover Bay Technologies Pvt Ltd
         </span>
       </h3>
+      <p className='text-xm mt-1 font-medium text-textDark'>
+        <i>Software Development Engineer II</i>
+      </p>
       <p className='text-sm mt-1 font-medium text-textDark'>
         July 2021 - December 2025
       </p>
@@ -19,16 +33,20 @@ export default function Company() {
           </span>
           <div>
             Led the successful migration of a large-scale e-commerce Website -{' '}
-            <a href='https://www.tirabeauty.com/' target='_blank' className='text-textGreen underline-transition text-textUnderline'>
+            <a
+              href='https://www.tirabeauty.com/'
+              target='_blank'
+              className='text-textGreen underline-transition text-textUnderline'
+            >
               TiraBeauty
-            </a> {' '}
-            from {' '}
+            </a>{' '}
+            from{' '}
             <span className='text-textGreen underline-transition text-textUnderline'>
               Vue.js to React
             </span>
             , significantly improving performance, scalability, and SEO.
             Achieved up to
-            <strong className='text-textGreen'>{' '}80% enhancement</strong> in web
+            <strong className='text-textGreen'> 80% enhancement</strong> in web
             performance and user experience.
           </div>
         </li>
@@ -118,4 +136,30 @@ export default function Company() {
       </ul>
     </div>
   );
-}
+};
+
+const GEHC = () => {
+  return (
+    <div>
+      <h3>
+        <span className='text-textGreen tracking-wide underline-transition text-textUnderline'>
+          GE Healthcare
+        </span>
+      </h3>
+      <p className='text-xm mt-1 font-medium text-textDark'>
+        <i>Software Engineer </i>
+      </p>
+      <p className='text-sm mt-1 font-medium text-textDark'>
+        December 2025 - present
+      </p>
+      <ul className='mt-6 flex flex-col gap-4'>
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
+            <TiArrowForward />
+          </span>
+          <div>Joined recenlty , details will be updated soon.</div>
+        </li>
+      </ul>
+    </div>
+  );
+};

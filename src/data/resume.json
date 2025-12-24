@@ -61,10 +61,17 @@
   },
   "experience": [
     {
+      "role": "Software Engineer",
+      "company": "GE healthcare",
+      "location": "Bangalore, KA",
+      "duration": "Dec 2025 - Present",
+      "responsibilities": "Joined recenlty , details will be updated soon."
+    },
+    {
       "role": "Software Development Engineer - II",
       "company": "Clover Bay Technologies Pvt Ltd",
       "location": "Bangalore, KA",
-      "duration": "Jun 2021 - Present",
+      "duration": "Jun 2021 - Dec 2025",
       "responsibilities": [
         "Led migration of a fully-fledged e-commerce platform from Vue.js to React, improving performance and scalability and enhancing SEO metrics by 90%.",
         "Redesigned checkout flow from 3 steps to a single-page flow, boosting conversion rates and revenue by 40%.",
