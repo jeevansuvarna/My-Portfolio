@@ -157,7 +157,7 @@ const GEHC = () => {
           <span className='text-textGreen mt-1'>
             <TiArrowForward />
           </span>
-          <div>Joined recenlty , details will be updated soon.</div>
+          <div>Joined recently , details will be updated soon.</div>
         </li>
       </ul>
     </div>
