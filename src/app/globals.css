@@ -34,29 +34,28 @@
 }
 
 .dark {
-  --body-color: #121212;
-  --text-green: #00ffff;
-  --text-light: #ccd6f6;
-  --text-dark: #8892b0;
-  --hover-color: rgba(100, 255, 218, 0.1);
-  --text-underline: #00ffff;
+  --body-color: #0b0e14;       /* Ink Blue */
+  --text-green: #818cf8;      /* Periwinkle Accent */
+  --text-light: #f8fafca7;
+  --text-dark: #64748b;
+  --hover-color: rgba(129, 140, 248, 0.15);
+  --text-underline: #818cf8;
   --shadowColor: 0px 4px 10px rgba(255, 255, 255, 0.5);
   --nav-text-color: #ffffff;
   /* Chat UI Colors - Dark */
-  --chat-bg: #1e1e2e;
-  --chat-header-bg: linear-gradient(135deg, #00d4d4 0%, #00a3a3 100%);
-  --chat-header-text: #1e1e2e;
-  --chat-user-bubble: linear-gradient(135deg, #00d4d4 0%, #00a3a3 100%);
-  --chat-user-text: #1e1e2e;
-  --chat-ai-bubble: #2a2a3e;
-  --chat-ai-text: #e2e8f0;
-  --chat-input-bg: #2a2a3e;
-  --chat-input-border: #3f3f5a;
+  --chat-bg: #111827;
+  --chat-header-bg: #1f2937;
+  --chat-user-bubble: #6366f1;
+  --chat-user-text: #ffffff;
+  --chat-ai-bubble: #1f2937;
+  --chat-ai-text: #f3f4f6;
+  --chat-input-bg: #030712;
+  --chat-input-border: #374151;
   --chat-input-focus: #00ffff;
-  --chat-send-bg: linear-gradient(135deg, #00d4d4 0%, #00a3a3 100%);
+  --chat-send-bg: linear-gradient(135deg, #818cf8 0%, #818cf8 100%);
   --chat-send-text: #1e1e2e;
   --chat-shadow: 0 25px 50px -12px rgba(0, 255, 255, 0.15);
-  --chat-icon-bg: linear-gradient(135deg, #00d4d4 0%, #00a3a3 100%);
+  --chat-icon-bg: linear-gradient(135deg, #6366f1 0%, #6366f1 100%);
   /* Initials Avatar - Dark */
   --initials-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   --initials-text: linear-gradient(135deg, #00ffff 0%, #00d4d4 100%);
@@ -358,12 +357,12 @@ body {
 .dark .suggested-question-btn {
   background: rgba(0, 255, 255, 0.05);
   border-color: rgba(0, 255, 255, 0.3);
-  color: #00ffff;
+  color: var(--text-green);
 }
 
 .dark .suggested-question-btn:hover {
   background: rgba(0, 255, 255, 0.15);
-  border-color: #00ffff;
+  border-color: var(--text-green);
 }
 
 /* Social Icons Styles */
@@ -903,14 +902,15 @@ body {
 
 /* Dark mode logo */
 .dark .logo-container {
-  --logo-border-color: #00ffff;
-  --logo-border-color-alt: #00a3a3;
+  --logo-border-color: #818cf8;
+  --logo-border-color-alt: #818cf8;
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   box-shadow: 0 4px 12px rgba(0, 255, 255, 0.15);
 }
 
 .dark .logo-text {
-  background: linear-gradient(135deg, #00ffff 0%, #00d4d4 100%);
+  /* background: linear-gradient(135deg, #00ffff 0%, #00d4d4 100%); */
+  background:linear-gradient(135deg, #6366f1 0%, #7678df 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -922,5 +922,7 @@ body {
 }
 
 .dark .logo-container:hover {
-  box-shadow: 0 8px 24px rgba(0, 255, 255, 0.3);
+  /* box-shadow: 0 8px 24px rgba(0, 255, 255, 0.3); */
+  box-shadow: 0 8px 24px #818cf8;
+
 }
