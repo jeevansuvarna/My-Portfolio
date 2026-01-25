@@ -76,6 +76,8 @@ export default function RootLayout({
               `,
           }}
         />
+        <script src="https://counterapi.com/c.js" async ></script>
+
       </head>
       <body>
         <main className='w-full h-screen overflow-x-hidden overflow-y-scroll font-bodyFont bg-bodyColor text-textLight scrollbar scrollbar-track-textDark/20 scrollbar-thumb-textDark/70'>

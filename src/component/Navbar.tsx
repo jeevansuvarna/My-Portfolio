@@ -2,11 +2,12 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+import { MdVisibility } from 'react-icons/md';
 import { MdOutlineClose } from 'react-icons/md';
 import { VscGithubAlt } from 'react-icons/vsc';
 import { LuLinkedin, LuInstagram } from 'react-icons/lu';
 import ToggleButton from './ToggleButton';
-import { detectMobileWidth } from '../helper/utils.js';
+import { detectMobileWidth, handlePageView } from '../helper/utils.js';
 import { SiLeetcode } from 'react-icons/si';
 import Toast from './common/toatMessage';
 export default function Navbar() {
@@ -61,10 +62,10 @@ export default function Navbar() {
       name: 'Contact',
       link: '#contact',
       highlight: false,
-    }
+    },
   ];
   const [showToast, setShowToast] = useState(true);
-
+  const [viewCount, setViewCount] = useState<number>(0);
   // Show toast only once when component mounts
   useEffect(() => {
     // Auto-hide after 2 seconds
@@ -75,6 +76,13 @@ export default function Navbar() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    (async () => {
+      const count = await handlePageView();
+      setViewCount(count);
+    })();
+  }, []);
+
   return (
     <div className='h-20 shadow-navbarShadow flex lg:h=[12vh] sticky top-0 z-60 bg-bodyColor px-8 sm:pr-0 z-300 navbar w-[90%] mx-auto mt-5 border border-[rgba(76,78,79,0.7)] rounded-full custom-bg'>
       <Link href='/' className='w-[50%] flex items-center'>
@@ -83,9 +91,18 @@ export default function Navbar() {
           <div className='logo-highlight'></div>
         </div>
       </Link>
+
       <div className='flex max-w-container h-full mx-auto py-1 font-titleFont flex items-center justify-between gap-3'>
         <div className='hidden mdl:inline-flex items-center gap-7'>
-          <ul className='flex text-[13px] gap-7 align-items'>
+          <ul className='flex text-[13px] gap-7 align-items items-center'>
+            <span className='mobile relative w-16 h-8 flex items-center gap-3 border border-gray-500 bg-bodyColor dark:bg-bodyColor rounded-full p-1'>
+              <span className='eye-blink flex items-center justify-center w-7 h-7 rounded-full  text-textGreen transition-colors duration-300'>
+                <MdVisibility size={20} />
+              </span>
+
+              <span>{viewCount}</span>
+            </span>
+
             {navList.map((nav) => {
               return (
                 <Link
@@ -179,6 +196,13 @@ export default function Navbar() {
                       </Link>
                     </motion.div>
                   ))}
+                  <span className='mobile relative w-16 h-8 flex items-center gap-3 border border-gray-500 bg-bodyColor dark:bg-bodyColor rounded-full p-1 m-auto '>
+                    <span className='eye-blink flex items-center justify-center w-7 h-7 rounded-full  text-textGreen transition-colors duration-300'>
+                      <MdVisibility size={20} />
+                    </span>
+
+                    <span>{viewCount}</span>
+                  </span>
                 </ul>
 
                 {/* Divider */}
@@ -187,10 +211,26 @@ export default function Navbar() {
                 {/* Social Icons */}
                 <div className='flex gap-4'>
                   {[
-                    { href: 'https://github.com/jeevansuvarna', icon: <VscGithubAlt />, label: 'github' },
-                    { href: 'https://leetcode.com/u/jeevansuvarna71/', icon: <SiLeetcode />, label: 'leetcode' },
-                    { href: 'https://www.instagram.com/jeevaaannnn?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr', icon: <LuInstagram />, label: 'instagram' },
-                    { href: 'https://www.linkedin.com/in/jeevan-suvarna-741b19186/', icon: <LuLinkedin />, label: 'linkedin' },
+                    {
+                      href: 'https://github.com/jeevansuvarna',
+                      icon: <VscGithubAlt />,
+                      label: 'github',
+                    },
+                    {
+                      href: 'https://leetcode.com/u/jeevansuvarna71/',
+                      icon: <SiLeetcode />,
+                      label: 'leetcode',
+                    },
+                    {
+                      href: 'https://www.instagram.com/jeevaaannnn?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr',
+                      icon: <LuInstagram />,
+                      label: 'instagram',
+                    },
+                    {
+                      href: 'https://www.linkedin.com/in/jeevan-suvarna-741b19186/',
+                      icon: <LuLinkedin />,
+                      label: 'linkedin',
+                    },
                   ].map((social, index) => (
                     <motion.a
                       key={social.label}
@@ -200,7 +240,9 @@ export default function Navbar() {
                       href={social.href}
                       target='_blank'
                     >
-                      <span className={`social-icon ${social.label} w-11 h-11 text-xl rounded-full inline-flex items-center justify-center cursor-pointer`}>
+                      <span
+                        className={`social-icon ${social.label} w-11 h-11 text-xl rounded-full inline-flex items-center justify-center cursor-pointer`}
+                      >
                         {social.icon}
                       </span>
                     </motion.a>

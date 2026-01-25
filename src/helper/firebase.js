@@ -4,6 +4,14 @@ import {
   fetchAndActivate,
   getValue,
 } from 'firebase/remote-config';
+import {
+  doc,
+  updateDoc,
+  increment,
+  setDoc,
+  getFirestore,
+  getDoc,
+} from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBFQp3hHC-zDMj6zloEQ-1ooJ6GKU4swHo',
@@ -17,6 +25,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const remoteConfig = getRemoteConfig(app);
+const db = getFirestore(app);
 
 // Optional: Set minimum fetch interval to 0 during dev
 remoteConfig.settings.minimumFetchIntervalMillis = 0;
@@ -31,4 +40,22 @@ export const fetchRemoteConfig = async () => {
   } catch (err) {
     console.error('Remote Config fetch failed:', err);
   }
+};
+
+export const incrementPageView = async (sameuser) => {
+  const ref = doc(db, 'stats', 'pageViews');
+  const snap = await getDoc(ref);
+
+  try {
+    if (sameuser) {
+      return snap.exists() ? snap.data().count : 0;
+    }
+    await updateDoc(ref, {
+      count: increment(1),
+      updatedAt: new Date(),
+    });
+  } catch {
+    await setDoc(ref, { count: 1, updatedAt: new Date() }, { merge: true });
+  }
+  return snap.exists() ? snap.data().count : 0;
 };
