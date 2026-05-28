@@ -127,14 +127,14 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Toast Notification - positioned near chat icon */}
+      {/* Toast Notification - positioned near chat icon
       <div className='fixed bottom-20 md:bottom-24 right-4 md:right-16 z-[1001]'>
         <Toast
           message={toastMessage}
           show={showToast}
           onClose={() => setShowToast(false)}
         />
-      </div>
+      </div> */}
 
       {/* Floating Chat Icon */}
       {!isOpen && (

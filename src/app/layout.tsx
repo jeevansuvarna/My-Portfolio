@@ -4,8 +4,9 @@ import './globals.css';
 import Navbar from '@/component/Navbar';
 import LeftSection from '@/component/LeftSection';
 import RightSection from '@/component/RightSection';
+import FullScreenLoader from '@/component/common/loader';
 import Script from 'next/script';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 declare global {
   interface Window {
     gtag: (...args: any[]) => void;
@@ -18,7 +19,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [isAppLoading, setIsAppLoading] = useState(true);
+
   useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsAppLoading(false);
+    }, 2000);
+
     const userLocationAndDevice = {
       language: navigator.language, // e.g., "en-US"
       platform: navigator.platform, // e.g., "MacIntel"
@@ -33,6 +40,8 @@ export default function RootLayout({
       user_agent: userLocationAndDevice.user_agent,
       screen_resolution: userLocationAndDevice.screen_resolution,
     });
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
@@ -80,18 +89,22 @@ export default function RootLayout({
 
       </head>
       <body>
-        <main className='w-full h-screen overflow-x-hidden overflow-y-scroll font-bodyFont bg-bodyColor text-textLight scrollbar scrollbar-track-textDark/20 scrollbar-thumb-textDark/70'>
-          <Navbar />
-          <div className='w-full h-[88vh] xl:flex items-center gap-20 justify-between'>
-            <div className='hidden xl:flex w-32 h-full fixed left-0 bottom-0'>
-              <LeftSection />
+        {isAppLoading ? (
+          <FullScreenLoader />
+        ) : (
+          <main className='w-full h-screen overflow-x-hidden overflow-y-scroll font-bodyFont bg-bodyColor text-textLight scrollbar scrollbar-track-textDark/20 scrollbar-thumb-textDark/70'>
+            <Navbar />
+            <div className='w-full h-[88vh] xl:flex items-center gap-20 justify-between'>
+              <div className='hidden xl:flex w-32 h-full fixed left-0 bottom-0 z-10'>
+                <LeftSection />
+              </div>
+              {children}
+              <div className='hidden xl:flex w-32 h-full fixed right-0 bottom-0'>
+                <RightSection />
+              </div>
             </div>
-            {children}
-            <div className='hidden xl:flex w-32 h-full fixed right-0 bottom-0'>
-              <RightSection />
-            </div>
-          </div>
-        </main>
+          </main>
+        )}
       </body>
     </html>
   );

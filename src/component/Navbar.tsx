@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { MdVisibility } from 'react-icons/md';
@@ -11,6 +12,8 @@ import { detectMobileWidth, handlePageView } from '../helper/utils.js';
 import { SiLeetcode } from 'react-icons/si';
 import Toast from './common/toatMessage';
 export default function Navbar() {
+  const searchParams = useSearchParams();
+  const showVisibilityCount = searchParams.get('visibility') === 'true';
   const ref = useRef<string | any>();
   const [showMenu, setShowMenu] = useState(false);
   const [isMobile, setIsMobile] = useState<any>(false);
@@ -95,13 +98,15 @@ export default function Navbar() {
       <div className='flex max-w-container h-full mx-auto py-1 font-titleFont flex items-center justify-between gap-3'>
         <div className='hidden mdl:inline-flex items-center gap-7'>
           <ul className='flex text-[13px] gap-7 align-items items-center'>
-            <span className='mobile relative w-16 h-8 flex items-center gap-3 border border-gray-500 bg-bodyColor dark:bg-bodyColor rounded-full p-1'>
-              <span className='eye-blink flex items-center justify-center w-7 h-7 rounded-full  text-textGreen transition-colors duration-300'>
-                <MdVisibility size={20} />
-              </span>
+            {showVisibilityCount && (
+              <span className='mobile relative w-16 h-8 flex items-center gap-3 border border-gray-500 bg-bodyColor dark:bg-bodyColor rounded-full p-1'>
+                <span className='eye-blink flex items-center justify-center w-7 h-7 rounded-full  text-textGreen transition-colors duration-300'>
+                  <MdVisibility size={20} />
+                </span>
 
-              <span>{viewCount}</span>
-            </span>
+                <span>{viewCount}</span>
+              </span>
+            )}
 
             {navList.map((nav) => {
               return (
@@ -119,13 +124,13 @@ export default function Navbar() {
           {!isMobile && (
             <div>
               <ToggleButton className={''} />
-              <div className='absolute top-full mt-2 -translate-x-1/2'>
+              {/* <div className='absolute top-full mt-2 -translate-x-1/2'>
                 <Toast
                   message='Now with theme switch!'
                   show={showToast}
                   onClose={() => setShowToast(false)}
                 />
-              </div>
+              </div> */}
             </div>
           )}
 
@@ -196,13 +201,15 @@ export default function Navbar() {
                       </Link>
                     </motion.div>
                   ))}
-                  <span className='mobile relative w-16 h-8 flex items-center gap-3 border border-gray-500 bg-bodyColor dark:bg-bodyColor rounded-full p-1 m-auto '>
-                    <span className='eye-blink flex items-center justify-center w-7 h-7 rounded-full  text-textGreen transition-colors duration-300'>
-                      <MdVisibility size={20} />
-                    </span>
+                  {showVisibilityCount && (
+                    <span className='mobile relative w-16 h-8 flex items-center gap-3 border border-gray-500 bg-bodyColor dark:bg-bodyColor rounded-full p-1 m-auto '>
+                      <span className='eye-blink flex items-center justify-center w-7 h-7 rounded-full  text-textGreen transition-colors duration-300'>
+                        <MdVisibility size={20} />
+                      </span>
 
-                    <span>{viewCount}</span>
-                  </span>
+                      <span>{viewCount}</span>
+                    </span>
+                  )}
                 </ul>
 
                 {/* Divider */}

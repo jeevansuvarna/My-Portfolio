@@ -6,7 +6,7 @@ import { SiLeetcode } from 'react-icons/si';
 
 export default function LeftSection() {
   return (
-    <div className='w-full h-full flex flex-col items-center justify-end gap-5 text-textLight'>
+    <div className='w-full h-full flex flex-col items-center justify-end gap-5 text-textLight z-10'>
       <div className='flex flex-col gap-5'>
         <a
           href='https://github.com/jeevansuvarna'

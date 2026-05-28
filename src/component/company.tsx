@@ -157,7 +157,90 @@ const GEHC = () => {
           <span className='text-textGreen mt-1'>
             <TiArrowForward />
           </span>
-          <div>Joined recently , details will be updated soon.</div>
+          <div>
+            Worked as a{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              Full Stack Developer
+            </span>
+            , designing and maintaining scalable customer analytics services
+            across both frontend and backend systems. Ensured seamless
+            integration between components to deliver reliable and
+            high-performing applications.
+          </div>
+        </li>
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
+            <TiArrowForward />
+          </span>
+          <div>
+            Developed and optimized{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              RESTful APIs
+            </span>{' '}
+            while enhancing UI components to improve usability and overall user
+            experience. Focused on performance tuning, responsiveness, and clean
+            interface design.
+          </div>
+        </li>
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
+            <TiArrowForward />
+          </span>
+          <div>
+            Collaborated with{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              cross-functional teams
+            </span>{' '}
+            to deliver end-to-end features, from requirement gathering to
+            deployment and support. Ensured timely delivery while maintaining
+            high code quality and best engineering practices.
+          </div>
+        </li>
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
+            <TiArrowForward />
+          </span>
+          <div>
+            Contributed to{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              AI in SDLC POC
+            </span>
+            , exploring the use of{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              Kiro AI
+            </span>{' '}
+            to enhance software development workflows. Evaluated its
+            effectiveness in improving developer productivity and automating
+            repetitive tasks.
+          </div>
+        </li>
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
+            <TiArrowForward />
+          </span>
+          <div>
+            Currently part of the{' '}
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              Security Remediation team
+            </span>
+            , identifying and analyzing vulnerabilities across multiple
+            services. Prioritized issues based on severity (
+            <span className='text-textGreen underline-transition text-textUnderline'>
+              Critical/High/Medium
+            </span>
+            ) and implemented effective mitigation strategies.
+          </div>
+        </li>
+        <li className='text-base flex gap-2 text-textDark'>
+          <span className='text-textGreen mt-1'>
+            <TiArrowForward />
+          </span>
+          <div>
+            Designed and implemented secure solutions, ensuring compliance with
+            security standards and preventing recurrence of vulnerabilities.
+            Strengthened overall system reliability by adopting secure coding
+            practices and proactive risk mitigation.
+          </div>
         </li>
       </ul>
     </div>
