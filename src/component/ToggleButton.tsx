@@ -1,31 +1,33 @@
 import { useEffect } from 'react';
+import { applyThemeWithTransition } from '@/utils/themeTransition';
 
 interface ToggleButtonProps {
   className?: string;
 }
 const ToggleButton: React.FC<ToggleButtonProps> = ({ className }) => {
-  function toggleTheme() {
+  function toggleTheme(event: React.MouseEvent<HTMLButtonElement>) {
     const html = document.documentElement;
     const themeIcon = document.getElementById('theme-icon');
     const toggleCircle = document.getElementById('toggle-circle');
-    console.log(html.classList.contains('dark'), 'check');
-    if (html.classList.contains('dark')) {
-      html.classList.remove('dark');
-      html.classList.add('light');
+    const isDark = html.classList.contains('dark');
 
-      localStorage.setItem('theme', 'light');
-      if (themeIcon) {
-        themeIcon.textContent = '🌕'; // Sun icon for light mode
+    applyThemeWithTransition(event, () => {
+      if (isDark) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        html.classList.remove('light');
+        localStorage.setItem('theme', 'dark');
       }
+    });
+
+    if (isDark) {
+      if (themeIcon) themeIcon.textContent = '🌕';
       toggleCircle?.classList.remove('translate-x-8');
     } else {
-      html.classList.add('dark');
-      html.classList.remove('light');
-
-      if (themeIcon) {
-        themeIcon.textContent = '🌙'; // Moon icon for dark mode
-      }
-      localStorage.setItem('theme', 'dark');
+      if (themeIcon) themeIcon.textContent = '🌙';
       toggleCircle?.classList.add('translate-x-8');
     }
   }
@@ -51,7 +53,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ className }) => {
   return (
     <button
       id='theme-toggle'
-      onClick={() => toggleTheme()}
+      onClick={toggleTheme}
       className={`${className} relative w-16 h-8 flex items-center border border-gray-500 bg-bodyColor dark:bg-bodyColor rounded-full p-1 transition-colors duration-300`}
     >
       {/* Stars - Visible in Dark Mode */}

@@ -950,3 +950,38 @@ body {
     transform: scaleY(1);
   }
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  animation: none;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2147483646;
+  animation-name: theme-diagonal-reveal;
+}
+
+/* Diagonal wipe: a 45° edge sweeps from the top-left corner to the
+   bottom-right corner, revealing the incoming theme. */
+@keyframes theme-diagonal-reveal {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 0);
+  }
+  to {
+    clip-path: polygon(0 0, 200% 0, 0 200%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

@@ -27,22 +27,34 @@ function ImageSkeleton() {
   );
 }
 
+const PROJECT_IMAGE_HEIGHT = 322;
+
 // Project Image with loading state
-function ProjectImage({ src, alt }: { src: string; alt: string }) {
+function ProjectImage({
+  src,
+  alt,
+  fixedHeight = false,
+}: {
+  src: string;
+  alt: string;
+  fixedHeight?: boolean;
+}) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className='relative w-full h-auto min-h-[200px]'>
+    <div
+      className={`relative w-full ${fixedHeight ? 'h-[322px]' : 'h-auto min-h-[200px]'}`}
+    >
       {isLoading && <ImageSkeleton />}
       <Image
-        className={`w-full h-full object-contain border border-[var(--text-underline)] rounded-md max-h-[332px] transition-opacity duration-500 ${
-          isLoading ? 'opacity-0 absolute inset-0' : 'opacity-100'
-        }`}
+        className={`w-full object-contain border border-[var(--text-underline)] rounded-md transition-opacity duration-500 ${
+          fixedHeight ? 'h-[322px]' : 'h-full max-h-[332px]'
+        } ${isLoading ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}
         src={src}
         alt={alt}
         width={619}
-        height={322}
+        height={PROJECT_IMAGE_HEIGHT}
         onLoad={() => setIsLoading(false)}
         onError={() => {
           setIsLoading(false);
@@ -52,6 +64,121 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
       {hasError && (
         <div className='w-full h-[322px] rounded-md border border-textDark/20 flex items-center justify-center bg-bodyColor'>
           <span className='text-textDark'>Failed to load image</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ProjectImageGallery({
+  images,
+  alt,
+  liveUrl,
+}: {
+  images: string[];
+  alt: string;
+  liveUrl?: string;
+}) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const hasMultiple = images.length > 1;
+  const hasLiveUrl = Boolean(liveUrl);
+
+  useEffect(() => {
+    if (!hasMultiple) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [hasMultiple, images.length]);
+
+  const goTo = (index: number) => setCurrentIndex(index);
+  const goPrev = () =>
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  const goNext = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+
+  if (images.length === 0) return null;
+
+  const imageContent = hasMultiple ? (
+    <div className='relative w-full h-[322px] overflow-hidden'>
+      {images.map((src, index) => (
+        <div
+          key={`${src}-${index}`}
+          className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+            index === currentIndex
+              ? 'opacity-100 z-10'
+              : 'opacity-0 z-0 pointer-events-none'
+          }`}
+        >
+          <ProjectImage
+            src={src}
+            alt={`${alt} - ${index + 1}`}
+            fixedHeight
+          />
+        </div>
+      ))}
+      <div className='hidden lgl:inline-block absolute w-full h-full bg-textGreen/20 rounded-md top-0 left-0 group-hover:bg-transparent duration-300'></div>
+    </div>
+  ) : (
+    <div className='relative h-[322px]'>
+      <ProjectImage src={images[0]} alt={alt} fixedHeight />
+      <div className='hidden lgl:inline-block absolute w-full h-full bg-textGreen/20 rounded-md top-0 left-0 group-hover:bg-transparent duration-300'></div>
+    </div>
+  );
+
+  return (
+    <div className='flex flex-col'>
+      <div className='relative'>
+        {hasLiveUrl ? (
+          <a href={liveUrl} target='_blank' rel='noreferrer' className='block'>
+            {imageContent}
+          </a>
+        ) : (
+          imageContent
+        )}
+
+        {hasMultiple && (
+          <>
+            <button
+              type='button'
+              aria-label='Previous image'
+              onClick={goPrev}
+              className='absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-bodyColor/80 border border-textGreen/30 text-textGreen flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-textGreen hover:text-bodyColor transition-all duration-300'
+            >
+              <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 19l-7-7 7-7' />
+              </svg>
+            </button>
+            <button
+              type='button'
+              aria-label='Next image'
+              onClick={goNext}
+              className='absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-bodyColor/80 border border-textGreen/30 text-textGreen flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-textGreen hover:text-bodyColor transition-all duration-300'
+            >
+              <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
+              </svg>
+            </button>
+          </>
+        )}
+      </div>
+
+      {hasMultiple && (
+        <div className='flex justify-center gap-2 mt-3'>
+          {images.map((_, index) => (
+            <button
+              key={index}
+              type='button'
+              aria-label={`Go to image ${index + 1}`}
+              onClick={() => goTo(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? 'w-5 bg-textGreen'
+                  : 'w-2 bg-textDark/40 hover:bg-textDark/70'
+              }`}
+            />
+          ))}
         </div>
       )}
     </div>
@@ -75,7 +202,6 @@ export default function Projects() {
   useEffect(() => {
     const fetchProjects = async () => {
       const res = await fetchRemoteConfig();
-      console.log(res, 'res');
       setProjects(res);
     };
 
@@ -113,34 +239,28 @@ export default function Projects() {
                 } gap-6`}
               >
                 {/* Image */}
-                <a
-                  href={project.live}
-                  target='_blank'
-                  rel='noreferrer'
-                  className='w-full xl:w-1/2 h-auto group'
-                >
-                  <div className='relative'>
-                    <ProjectImage src={project.image} alt={project.title} />
-                    <div className='hidden lgl:inline-block absolute w-full h-full bg-textGreen/20 rounded-md top-0 left-0 group-hover:bg-transparent duration-300'></div>
-                  </div>
-                </a>
+                <div className='w-full xl:w-1/2 h-auto group'>
+                  <ProjectImageGallery
+                    images={project.images ?? []}
+                    alt={project.title}
+                    liveUrl={project.live}
+                  />
+                </div>
 
                 {/* Content */}
-                <div
-                  className={`w-full xl:w-1/2 flex flex-col gap-6 lgl:justify-between items-end text-right `}
-                >
+                <div className='w-full xl:w-1/2 flex flex-col gap-6 lgl:justify-between items-start text-left'>
                   <p className='font-titleFont text-textGreen text-sm tracking-wide'>
                     Featured Project
                   </p>
                   <h3 className='text-2xl font-bold'>{project.title}</h3>
                   <p
-                    className={`bg-bodyColor relative z-20 text-sm md:text-base p-2 md:p-6 rounded-md shadow-shadowColor ${
+                    className={`bg-bodyColor relative z-20 text-sm md:text-base p-2 md:p-6 rounded-md shadow-shadowColor text-left ${
                       project.reverse ? 'xl:-mr-16' : 'xl:-ml-16'
                     }`}
                   >
                     {project.description}
                   </p>
-                  <ul className='flex gap-2 text-xs md:text-sm font-titleFont tracking-wide md:gap-5 justify-between text-textDark'>
+                  <ul className='flex gap-2 text-xs md:text-sm font-titleFont tracking-wide md:gap-5 justify-start text-textDark'>
                     {project.tech.map((tech: any, i: any) => (
                       <li key={i}>{tech}</li>
                     ))}
@@ -154,14 +274,16 @@ export default function Projects() {
                     >
                       <TbBrandGithub />
                     </a>
-                    <a
-                      href={project.live}
-                      target='_blank'
-                      rel='noreferrer'
-                      className='hover:text-textGreen duration-300'
-                    >
-                      <RxOpenInNewWindow />
-                    </a>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target='_blank'
+                        rel='noreferrer'
+                        className='hover:text-textGreen duration-300'
+                      >
+                        <RxOpenInNewWindow />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
